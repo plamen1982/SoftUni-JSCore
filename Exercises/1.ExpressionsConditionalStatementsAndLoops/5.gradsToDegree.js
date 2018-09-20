@@ -1,5 +1,4 @@
 function solve(grads) {
-
     let degrees = (grads / 10) * 9;
     let degreesInRange = (degrees % 360);
     if(degreesInRange < 0) {
