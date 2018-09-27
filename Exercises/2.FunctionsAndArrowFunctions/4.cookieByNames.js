@@ -1,6 +1,8 @@
 function cookieByNumbers(arrayOfArguments) {
     let number = arrayOfArguments[0];
     
+    let calculate = (callback) => callback()
+
     let chop = () => number / 2;
     let dice = () => Math.sqrt(number);
     let spice = () => number + 1;
@@ -10,19 +12,19 @@ function cookieByNumbers(arrayOfArguments) {
 
     for(let i = 1; i < arrayOfArguments.length; i++) {
         switch(arrayOfArguments[i]) {
-            case 'chop': number = chop(); 
+            case 'chop': number = calculate(chop); 
                 console.log(number); 
                 break;
-            case 'dice': number = dice();
+            case 'dice': number = calculate(dice);
                 console.log(number); 
                 break;
-            case 'spice': number = spice(); 
+            case 'spice': number = calculate(spice);
                 console.log(number); 
                 break;
-            case 'bake': number = bake(); 
+            case 'bake': number = calculate(bake); 
                 console.log(number);
                 break;
-            case 'fillet': number = fillet(); 
+            case 'fillet': number = calculate(fillet); 
                 console.log(number);
                 break;
         }
