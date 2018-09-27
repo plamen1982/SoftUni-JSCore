@@ -1,5 +1,5 @@
 function roadRadar([actualSpeed, areaOfDriving]) {
-    function calculateSeverity(limitSpeed, actualSpeed) {
+    function getInfraction(limitSpeed, actualSpeed) {
         let deltaSpeed  = actualSpeed - limitSpeed;
         if(deltaSpeed > 0 && deltaSpeed <= 20) {
             return 'speeding';
@@ -11,16 +11,26 @@ function roadRadar([actualSpeed, areaOfDriving]) {
             return '';
         }
     }
-    switch(areaOfDriving) {
-        case 'residential': return calculateSeverity(20, actualSpeed);
-        case 'city': return calculateSeverity(50, actualSpeed);
-        case 'interstate': return calculateSeverity(90, actualSpeed);
-        case 'motorway': return calculateSeverity(130, actualSpeed);
+    function getLimitSpeed(areaOfDriving) {
+        switch(areaOfDriving) {
+            case 'residential': return 20;
+            case 'city': return 50;
+            case 'interstate': return 90;
+            case 'motorway': return 130;
+        }
+    }
+
+    let speedLimit = getLimitSpeed(areaOfDriving);
+    let infraction = getInfraction(speedLimit, actualSpeed);
+
+    if(infraction) {
+        console.log(infraction);
+    } else {
+        console.log('');
     }
 }
 
-// let result = roadRadar([21, 'residential']);
-// let result = roadRadar([40, 'city']);
-// let result = roadRadar([120, 'interstate']);
-let result = roadRadar([200, 'motorway']);
-console.log(result);
+roadRadar([40, 'city']);
+roadRadar([21, 'residential']);
+roadRadar([120, 'interstate']);
+roadRadar([200, 'motorway']);
