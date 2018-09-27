@@ -2,13 +2,13 @@ function roadRadar([actualSpeed, areaOfDriving]) {
     function calculateSeverity(limitSpeed, actualSpeed) {
         let deltaSpeed  = actualSpeed - limitSpeed;
         if(deltaSpeed > 0 && deltaSpeed <= 20) {
-            console.log('speeding');
+            return 'speeding';
         } else if(deltaSpeed > 20 && deltaSpeed <= 40) {
-            console.log('excessive speeding');
+            return 'excessive speeding';
         } else if(deltaSpeed > 40) {
-            console.log('reckless driving');
+            return 'reckless driving';
         } else {
-            console.log('');
+            return '';
         }
     }
     switch(areaOfDriving) {
@@ -19,7 +19,8 @@ function roadRadar([actualSpeed, areaOfDriving]) {
     }
 }
 
-// roadRadar([21, 'residential']);
-// roadRadar([40, 'city']);
-// roadRadar([120, 'interstate']);
-roadRadar([200, 'motorway']);
+// let result = roadRadar([21, 'residential']);
+// let result = roadRadar([40, 'city']);
+// let result = roadRadar([120, 'interstate']);
+let result = roadRadar([200, 'motorway']);
+console.log(result);
