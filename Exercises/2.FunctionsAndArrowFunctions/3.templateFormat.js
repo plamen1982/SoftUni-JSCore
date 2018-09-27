@@ -1,5 +1,5 @@
 function templateFormat(quiz) {
-    debugger;
+
     function printQuestionAnswer(question, answer) {
         return `
     <question>  
