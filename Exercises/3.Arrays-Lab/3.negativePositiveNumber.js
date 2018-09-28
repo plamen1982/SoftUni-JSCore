@@ -8,7 +8,9 @@ function negativePositiveNumber(inputArray) {
                 newArray.push(element);
             }  
         });
-    newArray.forEach(element => { console.log(element) });
+    newArray.forEach(element => { 
+        console.log(element) 
+    });
 }
 
 negativePositiveNumber([7, -2, 8, 9])
