@@ -1,6 +1,6 @@
 function evenPositionElements(inputArray) {
-    let result = "";
     inputArray.forEach((element, currentIndex) => {
+        let result = "";
         if(currentIndex % 2 == 0) {
             result += element + " "
         }
