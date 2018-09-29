@@ -1,11 +1,5 @@
 function evenPositionElements(inputArray) {
-    inputArray.forEach((element, currentIndex) => {
-        let result = "";
-        if(currentIndex % 2 == 0) {
-            result += element + " "
-        }
-    });
-    return result;
+    return inputArray.filter((element, currentIndex) => currentIndex % 2 === 0).join(' ');
 }
 
 // console.log(evenPositionElements(['20', '30', '40']));
