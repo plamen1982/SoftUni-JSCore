@@ -1,24 +1,8 @@
 function firstAndLastKNumbers(array) {
     let [ numbersElements ] = array;
     let copyArray = array.slice(1);
-
-    let resultFirstElements = '';
-
-    copyArray.forEach((el, index, array) => {
-        if(numbersElements > index) {
-            resultFirstElements += el + ' ';
-        }
-    });
-    console.log(resultFirstElements);
-
-    let resultLastElements = '';
-
-    copyArray.forEach((el, index, array) => {
-        if(numbersElements > index) {
-            resultLastElements += array[array.length - numbersElements + index] + ' ';
-        }
-    });
-    console.log(resultLastElements);
+    console.log(copyArray.slice(0, numbersElements).join(" "));
+    console.log(copyArray.slice((copyArray.length - numbersElements), copyArray.length).join(" "));
 }
 
 firstAndLastKNumbers([2, 7, 8, 9]);
