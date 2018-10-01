@@ -1,6 +1,6 @@
 function equalNeighbors(matrix) {
     let counter = 0;
-    //check horizonal neighbors
+    //check horizontal neighbors
     for(let i = 0; i < matrix.length; i++) {
         for(let j = 0; j < matrix[i].length - 1; j++) {
             if(matrix[i][j] === matrix[i][j + 1]) {
