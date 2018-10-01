@@ -1,10 +1,9 @@
 function magicMatrices(inputMatrix) {
-    let magicArray = [];
     let isMagic = false;
-    inputMatrix
-    .forEach(array => {
-        magicArray.push(array.reduce((accumulator, element) => accumulator + element, 0));
-    });
+    let magicArray = inputMatrix.map(array => {
+            return array.reduce((accumulator, element) => accumulator + element, 0)
+        });
+
     for(let i = 0; i < magicArray.length - 2; i++) {
         if(magicArray[i] === magicArray[i + 1]) {
             isMagic = true;
