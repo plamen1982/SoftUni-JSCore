@@ -1,6 +1,5 @@
 function findVariableNamesInSentence(theString) {
-    let regex = /^_[a-z]+$/i;
-    let arrayOfStrings = theString.split(/[^a-zA-Z0-9_]+/g);
+    let arrayOfStrings = theString.match(/\b_[a-z]+\b/gi);
     let correctResults = [];
 
     function removeFirstUnderscore(element) {
@@ -8,12 +7,10 @@ function findVariableNamesInSentence(theString) {
     }
 
     for(let i = 0; i < arrayOfStrings.length; i++) {
-        if(regex.test(arrayOfStrings[i])) {
-            correctResults
-                .push(removeFirstUnderscore(arrayOfStrings[i]))
-        }
+        correctResults
+            .push(removeFirstUnderscore(arrayOfStrings[i]));
     }
-    return correctResults.join()
+    return correctResults.join();
 }
 
 console.log(findVariableNamesInSentence('The _id and _age variables are both integers.'));
