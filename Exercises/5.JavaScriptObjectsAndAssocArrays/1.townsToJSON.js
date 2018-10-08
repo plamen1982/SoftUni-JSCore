@@ -1,5 +1,5 @@
 function townsToJSON(inputArray) {
-   let result =  inputArray
+   let result = inputArray
     .map((element, index) => {
         if(index > 0) {
             return element
@@ -27,6 +27,7 @@ function townsToJSON(inputArray) {
         }
     });
 
+    //value of numbers to be numbers in JSON.stringify
     for(let i = 0; i < result.length; i++){
         let obj = result[i];
         for(let prop in obj){
