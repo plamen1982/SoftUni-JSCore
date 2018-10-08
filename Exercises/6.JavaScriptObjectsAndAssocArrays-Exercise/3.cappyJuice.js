@@ -22,10 +22,10 @@ function cappyJuice(inputArray) {
         }
     });
 
-    for(let keys of bottlesOfJuice) {
-        if(keys) {
-            for(let key of Object.keys(keys)) {
-                console.log(`${key} => ${keys[key]}`);
+    for(let bottleOfJuice of bottlesOfJuice) {
+        if(bottleOfJuice) {
+            for(let key of Object.keys(bottleOfJuice)) {
+                console.log(`${key} => ${bottleOfJuice[key]}`);
             }
         }
     }
