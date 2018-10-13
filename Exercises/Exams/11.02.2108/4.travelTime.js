@@ -17,10 +17,10 @@ function travelTime(inputArray) {
             if(obj[country][town] > priceOfTicket) {
                 obj[country][town] = priceOfTicket;
             }
-            return obj
+            return obj;
         }, {})
 
-let sortedCountries = Object.keys(destinations).sort((a, b) => a.localeCompare(b));
+let sortedCountries = Object.keys(destinations).sort((a, b) => a > b);
 
     for(let country of sortedCountries) {
         let result = "";
@@ -34,7 +34,7 @@ let sortedCountries = Object.keys(destinations).sort((a, b) => a.localeCompare(b
             result += town + " -> ";
             result += destinations[country][town] + " ";
         }
-        console.log(result);
+        // console.log(result);
     }
 }
 travelTime(["Bulgaria > Sofia > 25000",
