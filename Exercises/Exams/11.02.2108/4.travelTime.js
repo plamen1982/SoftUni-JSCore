@@ -1,20 +1,24 @@
-function travelTime(input) {
-    let destinations = {};
-    for (let line of input) {
-        let [country, city, costs] = line.split(" > ");
-        costs = +costs;
-        city = city.charAt(0).toUpperCase() + city.slice(1);
+function travelTime(inputArray) {
 
-        if (destinations.hasOwnProperty(country) === false) {
-            destinations[country] = {};
-        }
-        if (destinations[country].hasOwnProperty(city) === false) {
-            destinations[country][city] = costs;
-        }
-        if (costs < destinations[country][city]) {
-            destinations[country][city] = costs;
-        }
-    }
+    let destinations = inputArray
+        .map((el) => el.split(' > '))
+        .reduce((obj, el) => {
+            let country = el[0];
+            let town = el[1].charAt(0).toUpperCase() + el[1].slice(1);
+            let priceOfTicket = +el[2];
+            if(!obj[country]) {
+                obj[country] = {};
+            }
+
+            if(!obj[country][town]) {
+                obj[country][town] = priceOfTicket;
+            }
+
+            if(obj[country][town] > priceOfTicket) {
+                obj[country][town] = priceOfTicket;
+            }
+            return obj
+        }, {})
 
 let sortedCountries = Object.keys(destinations).sort((a, b) => a.localeCompare(b));
 
