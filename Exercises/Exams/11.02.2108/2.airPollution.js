@@ -28,7 +28,7 @@ function airPollution(airPollutionMap, pollutionForces) {
         let extractedResult = [];
         for(let i = 0; i < airPollutionMap.length; i++) {
             for(let j = 0; j < airPollutionMap.length; j++) {
-                if(airPollutionMap[i][j] > 50) {
+                if(airPollutionMap[i][j] >= 50) {
                     extractedResult.push(`[${i}-${j}]`);
                 };
             }
@@ -48,7 +48,11 @@ function airPollution(airPollutionMap, pollutionForces) {
         }
     }
 
-    console.log('Polluted areas: ' + extractPollutedAreas(airPollutionMap).join(', '));
+    if(extractPollutedAreas(airPollutionMap).length) {
+        console.log('Polluted areas: ' + extractPollutedAreas(airPollutionMap).join(', '));
+    } else {
+        console.log('No polluted areas')
+    }
 
 }
 
