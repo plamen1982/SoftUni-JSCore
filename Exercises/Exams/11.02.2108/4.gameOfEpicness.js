@@ -21,9 +21,6 @@ unitedKingdoms = kingdoms.reduce((acc, currKingdom) => {
     }
     return acc;
 }, {})
-//unitedKingdoms =  { 'Maiden Way': { Merek: 5000, Berinon: 100000 },
-//   Stonegate: { Ulric: 4900, Doran: 70000 },
-//   YorkenShire: { Quinn: 2000 } }
 
 fights = fights.reduce((acc, curr) => {
     let attackingKingdom = curr[0]; 
@@ -62,10 +59,68 @@ fights.forEach((fight) => {
 
 })
 
-console.log(unitedKingdoms);
+// { 'Maiden Way':
+//    { Merek: { wins: 0, loses: 2, army: 4050 },
+//      Berinon: { wins: 1, loses: 0, army: 110000 } },
+//   Stonegate:
+//    { Ulric: { wins: 2, loses: 1, army: 5336.1 },
+//      Doran: { wins: 1, loses: 0, army: 77000 } },
+//   YorkenShire: { Quinn: { wins: 0, loses: 1, army: 1800 } } }
+function getWinnerKingdom (unitedKingdoms) {
+    let kingdoms = Object.keys(unitedKingdoms);
+
+    for(let kingdom of kingdoms) {
+
+        let winsLosesArmy = Object.values(unitedKingdoms[kingdom])
+        for(let wLA of winsLosesArmy) {
+            if(!unitedKingdoms[kingdom].totalWins) {
+                unitedKingdoms[kingdom].totalWins = 0;
+            }
+            unitedKingdoms[kingdom].totalWins += +wLA.wins
+        }
+        // unitedKingdoms[kingdom].totalWins += +winsLosesArmy[0];
+    }
 
 }
+getWinnerKingdom (unitedKingdoms)
+console.log(unitedKingdoms)
+let kingdomNames = Object.keys(unitedKingdoms).sort((a, b) => { a > b});
+// console.log(kingdomNames)
+// [ 'Maiden Way', 'Stonegate', 'YorkenShire' ]
+// console.log(unitedKingdoms)
+// { 'Maiden Way':
+//    { Merek: { wins: 0, loses: 2, army: 4050 },
+//      Berinon: { wins: 1, loses: 0, army: 110000 } },
+//   Stonegate:
+//    { Ulric: { wins: 2, loses: 1, army: 5336.1 },
+//      Doran: { wins: 1, loses: 0, army: 77000 } },
+//   YorkenShire: { Quinn: { wins: 0, loses: 1, army: 1800 } } }
+for(let name of kingdomNames) {
+  let generals =  Object.keys(unitedKingdoms[name]).sort((a, b) => a > b)
+//   [ 'Berinon', 'Merek' ]
+// [ 'Doran', 'Ulric' ]
+// [ 'Quinn' ]
+//   console.log(generals)
 
+// }
+// let kingdoms1 = [
+// { kingdom: "Maiden Way", general: "Merek", army: 5000, wins: 5, losses: 2, army: 5000 },
+// { kingdom: "Stonegate", general: "Ulric", army: 4900, wins: 8, losses: 23, army: 8000 },
+// { kingdom: "Stonegate", general: "Doran", army: 70000, wins: 10, losses: 21, army: 10000 }]
+// let alphabeticaly = kingdoms1.reduce((acc, kingdom) => {
+//         if(!acc[kingdom.kingdom]) {
+//             acc[kingdom.kingdom] = {};
+//             acc[kingdom.kingdom].name = kingdom.kingdom;
+//             acc[kingdom.kingdom].wins = kingdom.wins
+//         } else if(acc[kingdom.kingdom].name === kingdom.kingdom) {
+//             acc[kingdom.kingdom].wins += kingdom.wins
+//         }
+//         return acc;
+// }, {})
+// let kingd = Object.values(alphabeticaly).sort((a, b) => a.wins < b.wins);
+// console.log(kingd);
+}
+}
 solve(
 [ 
     { kingdom: "Maiden Way", general: "Merek", army: 5000 },
