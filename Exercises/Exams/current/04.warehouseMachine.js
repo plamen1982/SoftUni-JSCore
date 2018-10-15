@@ -19,13 +19,25 @@ function warehouseMachine(inputArray) {
                 storage[brand][typeCoffe].exparation = date;
             } 
     
-            if(storage[brand][typeCoffe].exparation.localeCompare(date) === 1) {
+            if(storage[brand][typeCoffe].exparation.localeCompare(date) === 0) {
                 storage[brand][typeCoffe].exparation = '';
                 storage[brand][typeCoffe].exparation = date;
             }
         }
     }
-    console.log(storage)
+
+    console.log(isADateBiggerThanB('2025-05-25','2025-05-26'))
+    function isADateBiggerThanB(a, b) {
+        let arr = [];
+        arr.push(a);
+        arr.push(b);
+        arr.sort((a, b) => a < b);
+        if(arr[1] === b) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 warehouseMachine([
@@ -42,3 +54,4 @@ warehouseMachine([
     "INSPECTION",
   ]
   );
+
