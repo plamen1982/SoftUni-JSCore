@@ -26,7 +26,6 @@ function warehouseMachine(inputArray) {
         }
     }
 
-    console.log(isADateBiggerThanB('2025-05-25','2025-05-26'))
     function isADateBiggerThanB(a, b) {
         let arr = [];
         arr.push(a);
