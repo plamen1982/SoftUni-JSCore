@@ -10,9 +10,9 @@
 //     </div>
 // </div>
 
-(function bookGenerator() {
+let bookGenerator = (function bookGenerator() {
     let id = 1;
-    return function(selector, title, author, isbn) {
+     return function createBook(selector, title, author, isbn) {
         $(selector).append(
                 $('<div>').attr('id', `book${id}`)
                 .append($('<p>').addClass('title').text(title))
@@ -28,7 +28,8 @@
             function deselect(e) {
                 $(e.target).parent().css('border', '');
             }
+            
             id += 1;
     }
 
-}());
+})();
