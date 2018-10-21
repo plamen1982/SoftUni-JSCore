@@ -12,6 +12,7 @@ function timer() {
     $('#start-timer').on('click', () => {
         if(!isRunning) {
             intervalId = setInterval(startTimer, 1000);
+            console.log(intervalId)
             isRunning = true;
         }
     });
