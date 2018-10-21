@@ -17,7 +17,7 @@ let bookGenerator = (function bookGenerator() {
                 $('<div>').attr('id', `book${id}`)
                 .append($('<p>').addClass('title').text(title))
                 .append($('<p>').addClass('author').text(author))
-                .append($('<p>').addClass('isbn').text(isbn))
+                .append($('<p>').addClass('isbn').text(isbn + id))
                 .append($('<button>').text('Select').on('click', select))
                 .append($('<button>').text('Deselect').on('click', deselect)));
 
