@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}"
+                "${workspaceFolder}/tests"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },
@@ -23,7 +23,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\index.js"
+            "program": "${workspaceFolder}"
         }
     ]
 }
