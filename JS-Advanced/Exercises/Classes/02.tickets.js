@@ -6,6 +6,12 @@ function sortTickets(arrayOfTickets, sortCritiria) {
             this.status = status;
         }
     }
+    //ES5
+    // function Tickets(destination, price, status) {
+    //     this.destination = destination;
+    //     this.price = price;
+    //     this.status = status;
+    // }
     let sortedTickets = arrayOfTickets.map((ticket) => {
         return ticket.split('|')
     }).map((ticket) => {
