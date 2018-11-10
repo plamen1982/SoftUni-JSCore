@@ -15,6 +15,7 @@ function solve() {
             console.log(`${this.name} ${currentTask}`);
             this.tasks.push(currentTask);
             }
+            
         getSalary() {
             return this.salary;
         }
