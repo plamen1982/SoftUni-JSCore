@@ -2,6 +2,26 @@
 
 ## JavaScript Fundamentals
 
+Pavel Kolev - JS Video Lectures
+
+JS Fundamentals:
+
+JS Syntax: [a link](https://youtu.be/ZbWHW2-kncQ)
+Operations and Logic Flow: [a link](https://youtu.be/hUGlfiHp3v4)
+Functions: [a link](https://youtu.be/VCMExxIiKok)
+Arrays and Matrices: [a link](https://youtu.be/JD9yalY8GnA)
+Objects and Json: [a link](https://youtu.be/hFZeR6pjVUU)
+Exam Preparation 1: [a link](https://youtu.be/xrGB2g5fH2s)
+
+JS Advanced:
+
+DOM Manipulations : [a link](https://youtu.be/PDZoPSrrX_E)
+JQuery: [a link](https://youtu.be/NS8fzGEcJHs0)
+Advanced Functions: [a link](https://youtu.be/XQuM_ox4tUo)
+Object Composition: [a link](https://youtu.be/67xi2GkxknM)
+Unit Testing: [a link](https://youtu.be/lasID2wyv-0)
+JS Classes: [a link](https://youtu.be/5JIGrXhKDGg)
+Prototype [a link](Chain: https://youtu.be/mDNr_13sbD8)
 
 JS Fundamentals - септември 2018
  17 септември 2018  седмици

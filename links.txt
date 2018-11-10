@@ -1,0 +1,20 @@
+Pavel Kolev - JS Video Lectures
+
+JS Advanced:
+
+DOM Manipulations : https://youtu.be/PDZoPSrrX_E
+JQuery: https://youtu.be/NS8fzGEcJHs
+Advanced Functions: https://youtu.be/XQuM_ox4tUo
+Object Composition: https://youtu.be/67xi2GkxknM
+Unit Testing: https://youtu.be/lasID2wyv-0
+JS Classes: https://youtu.be/5JIGrXhKDGg
+Prototype Chain: https://youtu.be/mDNr_13sbD8
+
+JS Fundamentals:
+
+JS Syntax: https://youtu.be/ZbWHW2-kncQ
+Operations and Logic Flow: https://youtu.be/hUGlfiHp3v4
+Functions: https://youtu.be/VCMExxIiKok
+Arrays and Matrices: https://youtu.be/JD9yalY8GnA
+Objects and Json: https://youtu.be/hFZeR6pjVUU
+Exam Preparation 1: https://youtu.be/xrGB2g5fH2s
