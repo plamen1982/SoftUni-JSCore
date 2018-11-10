@@ -4,24 +4,24 @@
 
 Pavel Kolev - JS Video Lectures
 
-JS Fundamentals:
+### JS Fundamentals:
 
-### JS Syntax: [JS Syntax](https://youtu.be/ZbWHW2-kncQ)
-### Operations and Logic Flow: [Operations and Logic Flow](https://youtu.be/hUGlfiHp3v4)
-### Functions: [Functions](https://youtu.be/VCMExxIiKok)
-### Arrays and Matrices: [Arrays and Matrices](https://youtu.be/JD9yalY8GnA)
-### Objects and Json: [Objects and Json](https://youtu.be/hFZeR6pjVUU)
-### Exam Preparation 1: [Exam Preparation 1](https://youtu.be/xrGB2g5fH2s)
+##### JS Syntax: [JS Syntax](https://youtu.be/ZbWHW2-kncQ)
+##### Operations and Logic Flow: [Operations and Logic Flow](https://youtu.be/hUGlfiHp3v4)
+##### Functions: [Functions](https://youtu.be/VCMExxIiKok)
+##### Arrays and Matrices: [Arrays and Matrices](https://youtu.be/JD9yalY8GnA)
+##### Objects and Json: [Objects and Json](https://youtu.be/hFZeR6pjVUU)
+##### Exam Preparation 1: [Exam Preparation 1](https://youtu.be/xrGB2g5fH2s)
 
-JS Advanced:
+### JS Advanced:
 
-### DOM Manipulations: [DOM Manipulations](https://youtu.be/PDZoPSrrX_E)
-### JQuery: [JQuery](https://youtu.be/NS8fzGEcJHs0)
-### Advanced Functions: [Advanced Functions](https://youtu.be/XQuM_ox4tUo)
-### Object Composition: [Object Composition](https://youtu.be/67xi2GkxknM)
-### Unit Testing: [Unit Testing](https://youtu.be/lasID2wyv-0)
-### JS Classes: [JS Classes](https://youtu.be/5JIGrXhKDGg)
-### Prototype Chain: [Prototype Chain](https://youtu.be/mDNr_13sbD8)
+##### DOM Manipulations: [DOM Manipulations](https://youtu.be/PDZoPSrrX_E)
+##### JQuery: [JQuery](https://youtu.be/NS8fzGEcJHs0)
+##### Advanced Functions: [Advanced Functions](https://youtu.be/XQuM_ox4tUo)
+##### Object Composition: [Object Composition](https://youtu.be/67xi2GkxknM)
+##### Unit Testing: [Unit Testing](https://youtu.be/lasID2wyv-0)
+##### JS Classes: [JS Classes](https://youtu.be/5JIGrXhKDGg)
+##### Prototype Chain: [Prototype Chain](https://youtu.be/mDNr_13sbD8)
 
 JS Fundamentals - септември 2018
  17 септември 2018  седмици
