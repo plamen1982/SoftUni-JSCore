@@ -2,7 +2,7 @@
 
 ## JavaScript Fundamentals
 
-Pavel Kolev - JS Video Lectures
+## Pavel Kolev - JS Video Lectures
 
 ### JS Fundamentals:
 
