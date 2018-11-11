@@ -43,12 +43,11 @@ function createComputerHierarchy() {
             }
 
             set battery(newBattery) {
-                if(! (newBattery instanceof Battery)) {
+                if(! (battery instanceof Battery)) {
                     throw TypeError('not a valid battery'); 
                 }
                 this._battery = newBattery;
             }
-
             get battery() {
                 return this._battery;
             }

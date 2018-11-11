@@ -22,6 +22,7 @@
 ##### Unit Testing: [Unit Testing](https://youtu.be/lasID2wyv-0)
 ##### JS Classes: [JS Classes](https://youtu.be/5JIGrXhKDGg)
 ##### Prototype Chain: [Prototype Chain](https://youtu.be/mDNr_13sbD8)
+##### Modules: [Modules] https://youtu.be/kSb6UeOYebg
 
 JS Fundamentals - септември 2018
  17 септември 2018  седмици

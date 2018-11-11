@@ -34,19 +34,22 @@ function solve() {
         BirthdayBalloon
     }
 }
-
-let regBallon = new Balloon('red', 100);
+let AllBalloons = solve();
+const { Balloon, PartyBalloon, BirthdayBalloon } = AllBalloons;
+let redBallon = new Balloon('red', 100);
 // console.log(regBallon.color);
 // console.log(regBallon.gasWeight);
 
-let partyBallon = new PartyBallon('blue', 200, 'purple', 50);
+let partyBallon = new PartyBalloon('blue', 200, 'purple', 50);
+console.log(partyBallon instanceof Balloon);
+
 // console.log(partyBallon.color);
 // console.log(partyBallon.gasWeight);
 
 // console.log(partyBallon.ribbon.color);
 // console.log(partyBallon.ribbon.length);
 
-let birthdayBallon = new BirthdayBallon('white', 100, 'pink', 200, 34, 'red');
+let birthdayBallon = new BirthdayBalloon('white', 100, 'pink', 200, 34, 'red');
 console.log(birthdayBallon.ribbon.color);
 
 
