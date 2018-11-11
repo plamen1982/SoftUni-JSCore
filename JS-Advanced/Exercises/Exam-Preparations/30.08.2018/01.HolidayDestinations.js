@@ -8,14 +8,13 @@ function addDestination() {
 
     let season = $('#seasons option:selected').text();
     //Reset option to initial value
-    $('#seasons').prop('selectedIndex',0);
+    $('#seasons').prop('selectedIndex', 0);
 
     let table = $('#destinationsList');
     let newRow = `<tr><td>${city}, ${country}</td><td class="season">${season}</td></tr>`;
     if(city && country) {
         table.append(newRow);
     }
-
 
     let seasons = $('#destinationsList .season')
     .toArray()
