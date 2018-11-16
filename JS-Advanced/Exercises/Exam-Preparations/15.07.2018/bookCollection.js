@@ -7,7 +7,7 @@ class BookCollection {
     }
 
     get room () {
-        this._room;
+       return this._room;
     }
 
     set room(currentRoom) {
@@ -37,7 +37,7 @@ class BookCollection {
             this.shelf.push(book);
         }
         this.shelf.sort((book1, book2) => book1.bookAuthor > book2.bookAuthor);
-        return this.shelf;
+        return this;
     }
 
     throwAwayBook(bookName) {
@@ -67,7 +67,7 @@ class BookCollection {
 
     toString() {
         let result = ''
-        if(this.shelf.length = 0) {
+        if(this.shelf.length === 0) {
             return 'It\'s an empty shelf';
         } else {
 
@@ -86,5 +86,6 @@ let livingRoom = new BookCollection("Programming", "livingRoom", 5)
     .addBook("Introduction to Programming with Java", "Svetlin Nakov")
     .addBook("Programming for .NET Framework", "Svetlin Nakov");
 console.log(livingRoom.toString());
+
 
 
