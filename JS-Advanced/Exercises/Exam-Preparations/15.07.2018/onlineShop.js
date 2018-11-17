@@ -20,6 +20,7 @@ function onlineShop(selector) {
         <label class="field">BGN</label>
     </div>`;
     $(selector).html(form);
+
     let product = $('.custom-select');   
     let price = $('#price');
     let quantity = $('#quantity');
@@ -30,7 +31,7 @@ function onlineShop(selector) {
     let totalQuantity = 0;
     let totalPrice = 0;
 
-    product.on('keyup', () => {
+    product.on('input', () => {
         if(product.val() !== "") {
             submitButton.prop('disabled', false);
         } else {
@@ -46,7 +47,7 @@ function onlineShop(selector) {
         totalQuantity += +quantity.val(); 
         totalPrice += +price.val();
 
-        if(totalQuantity < 149) {
+        if(totalQuantity < 150) {
             capacity.val(totalQuantity);    
         } else {
             capacity.val('full');

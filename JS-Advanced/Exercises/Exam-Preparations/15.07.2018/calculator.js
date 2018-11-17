@@ -21,6 +21,7 @@ class Calculator {
                 }
             }
         }
+        
         if (divide !== undefined) {
             this.expenses = [divide];
             return divide;
