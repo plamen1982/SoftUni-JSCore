@@ -62,8 +62,8 @@ class Vacationer {
     }
 
     generateIDNumber () {
-        let firstLetterFirstName = this.firstName[0];
-        let lastLetterLastName = this.lastName[this.lastName.length - 1];
+        let firstLetterFirstName = this.fullName.firstName[0];
+        let lastLetterLastName = this.fullName.lastName[this.fullName.lastName.length - 1];
         let lastDigit;
         if(lastLetterLastName === 'a' || lastLetterLastName === 'e' || lastLetterLastName === 'o' || lastLetterLastName === 'i' || lastLetterLastName === 'u') {
             lastDigit = 8;
