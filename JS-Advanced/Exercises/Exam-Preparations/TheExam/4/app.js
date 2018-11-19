@@ -10,11 +10,11 @@ buttonRegOffer.on('click', function() {
 	let div1 = $('<div>')
 	div1.addClass('apartment')
 	let rent = $('<p>');
-	rent.text(apartmentRent.val());
+	rent.text(`Rent: ${apartmentRent.val()}`);
 	let type = $('<p>');
-	type.text(apartmentType.val());
+	type.text(`Type: ${apartmentType.val()}`);
 	let commision = $('<p>');
-	commision.text(agencyCommission.val());
+	commision.text(`Commision: ${agencyCommission.val()}`);
 	div1.append(rent);
 	div1.append(type);
 	div1.append(commision);
