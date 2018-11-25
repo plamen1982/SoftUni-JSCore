@@ -1,131 +1,123 @@
-function realEstateAgency () {
+function realEstateAgency() {
+	let buttonRegOffer = $("#regOffer button");
+	buttonRegOffer.on('click', registerOffer);
 
-let building = $('#building');
-let apartmentRent = $( "input[name*='apartmentRent']");
-let apartmentType = $( "input[name*='apartmentType']");
-let agencyCommission = $( "input[name*='agencyCommission']");
-let buttonRegOffer = $("#regOffer button");
-let message = $('#message');
-buttonRegOffer.on('click', function() {
-	let div1 = $('<div>')
-	div1.addClass('apartment')
-	let rent = $('<p>');
-	rent.text(`Rent: ${apartmentRent.val()}`);
-	let type = $('<p>');
-	type.text(`Type: ${apartmentType.val()}`);
-	let commision = $('<p>');
-	commision.text(`Commision: ${agencyCommission.val()}`);
-	div1.append(rent);
-	div1.append(type);
-	div1.append(commision);
-	let isColonCharExist = false; 
+	let buttonFindOffer = $('#findOffer button');
+	buttonFindOffer.on('click', findFirstOffer);
+	let agencyCommision = 0;
+	function registerOffer() {
 
-	if(apartmentType.val().indexOf(':') !== -1) {
-		isColonCharExist = true;
-	}
-	if(typeof(+apartmentRent.val()) === 'number' && typeof(+agencyCommission.val()) === 'number') {
-		if(+agencyCommission.val() >= 0 && +agencyCommission.val() <= 100) {
-			if(apartmentType.val() !== '' && isColonCharExist === false) {
-				building.append(div1);
-				message.text('Your offer was created successfully.');
-				apartmentRent.val('');
-				apartmentType.val('');
-				agencyCommission.val('');
-			}
-			else {
+		let building = $('#building');
+		let apartmentRent = $("input[name*='apartmentRent']");
+		let apartmentType = $("input[name*='apartmentType']");
+		let agencyCommission = $("input[name*='agencyCommission']");
+		let message = $('#message');
+	
+		let div1 = $('<div>')
+		div1.addClass('apartment')
+		let rent = $('<p>');
+		rent.text(`Rent: ${apartmentRent.val()}`);
+		let type = $('<p>');
+		type.text(`Type: ${apartmentType.val()}`);
+		let commision = $('<p>');
+		commision.text(`Commission: ${agencyCommission.val()}`);
+		div1.append(rent);
+		div1.append(type);
+		div1.append(commision);
+		let isColonCharExist = false;
+	
+		if (apartmentType.val().indexOf(':') !== -1) {
+			isColonCharExist = true;
+		}
+		if (typeof (+apartmentRent.val()) === 'number' && typeof (+agencyCommission.val()) === 'number') {
+			if (+agencyCommission.val() >= 0 && +agencyCommission.val() <= 100) {
+				if (apartmentType.val() !== '' && isColonCharExist === false) {
+					building.append(div1);
+					message.text('Your offer was created successfully.');
+					apartmentRent.val('');
+					apartmentType.val('');
+					agencyCommission.val('');
+				}
+				else {
+					message.text('Your offer registration went wrong, try again.');
+				}
+			} else {
 				message.text('Your offer registration went wrong, try again.');
 			}
 		} else {
 			message.text('Your offer registration went wrong, try again.');
 		}
-	} else {
-		message.text('Your offer registration went wrong, try again.');
+	
 	}
-});
+	
+	function findFirstOffer() {
 
-let buttonFindOffer = $('#findOffer button');
+		let theWholeOffer = $('.apartment');
+		let thePriceApartment;
+		let theTypeApartment;
+		let theCommision;
+		let familyBudget = +($("input[name*='familyBudget']").val());
+		let familyApartmentType = $("input[name*='familyApartmentType']").val();
+		let familyName = $("input[name*='familyName']").val();
+		let diffBetwBudgetAndPrice = 0;
+		let isOfferFound = false;
 
-buttonFindOffer.on('click', function() {
-	let conteinersApartment = $('.apartment');
-	let theWholeOffer = $('.apartment');
-	let thePriceApartment;
-	let theTypeApartment;
-	let theCommision;
-	let findOfferContainer = $('#findOffer');
-	let familyBudget = $( "input[name*='familyBudget']");
-	let familyApartmentType = $( "input[name*='familyApartmentType']");
-	let familyName = $( "input[name*='familyName']");
-	let diffBetwBudgetAndPrice = 0;
-	let agencyCommision = 0;
-	let textHeader = $('#roof h1')
-	if(theWholeOffer.length > 0) {
-		theWholeOffer.toArray().forEach((offer) =>{
-			thePriceApartment = +offer.childNodes[0].textContent;
-			theTypeApartment = offer.childNodes[1].textContent;
-			theCommision = +offer.childNodes[2].textContent;
-			if(+familyBudget.val() > 0 || familyApartmentType.val() !== '' || familyName.val() !== '') {
-				if(familyApartmentType.val() === theTypeApartment) {
-					diffBetwBudgetAndPrice = +familyBudget.val() - (thePriceApartment + thePriceApartment * (theCommision/100))
-					if(diffBetwBudgetAndPrice > 0) {
-						message.text('');
-						message.text('Enjoy your new home! :)');
-						agencyCommision = +familyBudget.val() * theCommision + thePriceApartment * (theCommision/100);
-						textHeader.text(`Agency profit: ${agencyCommision} lv.`)
-						let div = $('<div>');
-						div.addClass('apartment');
-						div.css('border: 2px solid red');
-						let p1 = $('<p>');
-						p1.text(familyName.val())
-						let p2 = $('<p>');
-						p2.text('live here now')
-						let button = $('<button>');
-						button.text('MoveOut');
-						offer.parentElement.removeChild(offer);
-						div.append(p1);
-						div.append(p2);
-						div.append(button);
-						building.append(div);
-						familyBudget.val('')
-						familyApartmentType.val('')
-						familyName.val('')
-						button.on('click', () => {
-							debugger;
-						});
+		if (typeof (familyBudget) === 'number' && familyBudget > 0 && familyApartmentType.length > 0 && familyName.length > 0) {
+			if (theWholeOffer.length > 0) {
+
+				theWholeOffer.toArray().forEach((offer) => {
+					if(offer.childNodes[0].textContent.indexOf(':') > -1) {
+						thePriceApartment = +offer.childNodes[0].textContent.split(':')[1].trim();
+						theTypeApartment = offer.childNodes[1].textContent.split(':')[1].trim();;
+						theCommision = +offer.childNodes[2].textContent.split(':')[1].trim();;
+		
+						if (familyApartmentType === theTypeApartment) {
+							diffBetwBudgetAndPrice = familyBudget - ( thePriceApartment + thePriceApartment * (theCommision/100) )
+							if (diffBetwBudgetAndPrice > 0 && !isOfferFound) {
+								successfulOffer(offer);
+								isOfferFound = true;
+							}
+						}
 					}
-				}
+				});
 			}
-		}); 
-
+		}
 	}
-});
 
+	function successfulOffer(offer) {
+		let building = $('#building');
+		let message = $('#message');
+		let textHeader = $('#roof h1');
+		let familyBudget = +($("input[name*='familyBudget']").val());
+
+		thePriceApartment = +offer.childNodes[0].textContent.split(':')[1].trim();
+		theCommision = +offer.childNodes[2].textContent.split(':')[1].trim();;
+		message.text('');
+		message.text('Enjoy your new home! :)');
+		agencyCommision += familyBudget * ( theCommision/100 ) + thePriceApartment * ( theCommision/100);
+		textHeader.text(`Agency profit: ${agencyCommision} lv.`)
+		let div = $('<div>');
+		div.addClass('apartment');
+		div.css('border', '2px solid red');
+		let p1 = $('<p>');
+		p1.text($("input[name*='familyName']").val())
+		let p2 = $('<p>');
+		p2.text('live here now')
+		let button = $('<button>');
+		button.text('MoveOut');
+		offer.parentElement.removeChild(offer);
+		div.append(p1);
+		div.append(p2);
+		div.append(button);
+		building.append(div);
+		$("input[name*='familyBudget']").val('');
+		$("input[name*='familyApartmentType']").val('');
+		$("input[name*='familyName']").val('');
+		button.on('click', (e) => {
+			debugger;
+			let familyName = e.target.parentElement.firstElementChild.textContent;
+			e.target.parentElement.remove();
+			message.text(`They had found cockroackes in ${familyName}'s apartment`);
+		});
+	}
 }
-
-// <body onload="realEstateAgency()">
-//     <section>
-//         <div id="roof">
-//             <h1>Agency profit: 0 lv.</h1>
-//         </div>
-//         <div id="building"></div>
-//         <div id="offerManager">
-//             <div id="regOffer">
-//                 <h2>Reg offer</h2>
-//                 <input type="text" name="apartmentRent" placeholder="Rent price...">
-//                 <input type="text" name="apartmentType" placeholder="Apartment type...">
-//                 <input type="text" name="agencyCommission" placeholder="Commission rate...">
-//                 <button name="regOffer">Reg offer</button>
-//             </div>
-//             <div id="findOffer">
-//                 <h2>Find offer</h2>
-//                 <input type="text" name="familyBudget" placeholder="Family budget....">
-//                 <input type="text" name="familyApartmentType" placeholder="Apartment type...">
-//                 <input type="text" name="familyName" placeholder="Family name...">
-//                 <button name="findOffer">Find offer</button>
-//             </div>
-//             <div id="notifications">
-//                 <p id="message"></p>
-//             </div>
-//         </div>
-//     </section>
-// </body>
-// </html>

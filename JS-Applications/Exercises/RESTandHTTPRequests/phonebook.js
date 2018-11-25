@@ -59,8 +59,8 @@ function attachEvents() {
                 error: handleError
             };
             $.ajax(request);
-                $person.val('');
-                $phone.val('');
+            $person.val('');
+            $phone.val('');
         }
         catch (err) {
             handleError(err);
