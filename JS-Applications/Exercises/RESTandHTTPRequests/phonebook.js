@@ -1,35 +1,31 @@
 function attachEvents() {
-    const url = 'https://phonebook-nakov.firebaseio.com/phonebook.json';
+    const url = 'https://phonebook-nakov.firebaseio.com/phonebook';
     const $phoneBook = $('#phonebook');
     const $person = $('#person');
     const $phone = $('#phone');
 
-    $('#btnLoad').on('click', loadContacts)
-    $('#btnCreate').on('click', createContact)
+    $('#btnLoad').on('click', () => { loadContacts() })
+    $('#btnCreate').on('click', () => { createContact() })
 
     function loadContacts() {
-        try {
-            $.get(url).then((users) => {
-                if (!users) {
-                    throw new Error('There is no users in DataBase, you need to create first :)')
-                }
-                successUsers(users);
-            }).fail(handleError);
-        } catch (e) {
-            alert(e)
+            $phoneBook.empty();
+            let request = {
+                url: url + ".json",
+                method: "GET",
+                success: successUsers,
+                error: handleError
+            };
+            $.ajax(request);
         }
-    }
-
 
     function successUsers(users) {
-        $phoneBook.empty();
         Object.keys(users).forEach((userId) => {
             $li = $('<li>');
             $li.text(`${users[userId].person}: ${users[userId].phone}`);
-            $button = $('<button>');
-            $button.text('[Delete]');
-            $button.on('click', () => { deleteContact(userId) });
-            $li.append($button);
+            $deleteBtn = $('<button>');
+            $deleteBtn.text('[Delete]');
+            $deleteBtn.on('click', () => { deleteContact(userId) });
+            $li.append($deleteBtn);
             $phoneBook.append($li);
     })
 }
@@ -47,27 +43,31 @@ function attachEvents() {
     function createContact() {
         try {
             if (!$person.val() || !$phone.val()) {
-                throw new Error('Person and phone are mandatory fields', handleError);
+                throw new Error('Person and phone are mandatory fields');
             }
 
-            let data = {
+            let contact = {
                 person: $person.val(),
                 phone: $phone.val(),
             }
-            $.post(url, JSON.stringify(data)).then((id) => {
-                alert(`Object saved with id: ${id.name}`);
+
+            let request = {
+                url: url + ".json",
+                method: "POST",
+                data: JSON.stringify(contact),
+                success: loadContacts,
+                error: handleError
+            };
+            $.ajax(request);
                 $person.val('');
                 $phone.val('');
-                loadContacts();
-            }).fail(handleError);
         }
         catch (err) {
-            alert(err);
+            handleError(err);
         }
     }
 
     function handleError(err) {
-        alert(err);
-        console.log(err);
+        alert(`Error:${err}`);
     }
 }
