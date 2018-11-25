@@ -123,7 +123,7 @@ function realEstateAgency() {
 
 			let familyName = $(this).closest('.apartment').find('p:first').text();
 			$(this).closest('.apartment').remove();
-			message.text(`They had found cockroackes in ${familyName}'s apartment`);
+			message.text(`They had found cockroaches in ${familyName}'s apartment`);
 		});
 	}
 }
