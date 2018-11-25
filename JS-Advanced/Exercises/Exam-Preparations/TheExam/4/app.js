@@ -76,7 +76,13 @@ function realEstateAgency() {
 							if (diffBetwBudgetAndPrice > 0 && !isOfferFound) {
 								successfulOffer(offer);
 								isOfferFound = true;
+							} else {
+								message.textContent = '';
+								message.textContent = 'We were unable to find you a home, so sorry 😞';
 							}
+						} else {
+							message.textContent = '';
+							message.textContent = 'We were unable to find you a home, so sorry 😞';
 						}
 					}
 				});
@@ -113,10 +119,10 @@ function realEstateAgency() {
 		$("input[name*='familyBudget']").val('');
 		$("input[name*='familyApartmentType']").val('');
 		$("input[name*='familyName']").val('');
-		button.on('click', (e) => {
-			debugger;
-			let familyName = e.target.parentElement.firstElementChild.textContent;
-			e.target.parentElement.remove();
+		button.on('click', function(){
+
+			let familyName = $(this).closest('.apartment').find('p:first').text();
+			$(this).closest('.apartment').remove();
 			message.text(`They had found cockroackes in ${familyName}'s apartment`);
 		});
 	}

@@ -7,28 +7,24 @@ class Vacation {
     }
 
     registerChild(name, grade, budget) {
-        if(!this.kids[grade]) {
-            this.kids[grade] = [];
-        } 
-
+        let output;
         if(this.budget <= budget) {
-            let isExist = false;
-            this.kids[grade].find((nameMoney) => {
-                let [currentName] = nameMoney.split('-');
-                if(name === currentName) {
-                    isExist = true;
-                    return `${name} is already in the list for this ${this.destination} vacation.`
-                } 
-            });
-            if(!isExist) {
+
+            if(!this.kids[grade]) {
+                this.kids[grade] = [];
+            } 
+
+            let isThisKidExist = this.kids[grade].some((kidName) => kidName.split('-')[0] === name);
+            if(!isThisKidExist) {
                 this.kids[grade].push(`${name}-${budget}`);
                 return grade;
+            } else {
+                output = `${name} is already in the list for this ${this.destination} vacation.`
             }
         } else {
-            return `${name}'s money is not enough to go on vacation to ${this.destination}.`
+            output = `${name}'s money is not enough to go on vacation to ${this.destination}.`
         }
-
-
+        return output;
     }
 
     removeChild(name, grade) {
@@ -46,20 +42,19 @@ class Vacation {
     }
 
     toString() {
+        let result = '';
         let sortedGrades = Object.keys(this.kids).sort((a, b) => a > b);
-        let countKids = 0;
-        sortedGrades.forEach((grade) => {
-            this.kids[grade].forEach((kid, index) => {
-                countKids += 1;
-            });
-        }); 
-        let result = `${this.organizer} will take ${countKids} children on trip to ${this.destination}\n`;
-        sortedGrades.forEach((grade) => {
-            result += `Grade: ${grade}\n`
-            this.kids[grade].forEach((kid, index) => {
-                result += `${index + 1}. ${kid}\n`;
-            });
-        });   
+        if(this.numberOfChildren > 1) {
+            result += `${this.organizer} will take ${countKids} children on trip to ${this.destination}\n`;
+            sortedGrades.forEach((grade) => {
+                result += `Grade: ${grade}\n`
+                this.kids[grade].forEach((kid, index) => {
+                    result += `${index + 1}. ${kid}\n`;
+                });
+            });   
+        } else {
+            result += `No children are enrolled for the trip and the organization of ${this.organizer} falls out...`;
+        }
         return result;
     }
     
@@ -76,7 +71,6 @@ class Vacation {
         } else {
             return `No children are enrolled for the trip and the organization of ${this.organizer} falls out...`;
         }
-
     }
 }
 
