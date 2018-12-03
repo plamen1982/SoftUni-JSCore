@@ -3,7 +3,7 @@ async function attachEvents() {
     const username = "pax";
     const password = "774";
     const divCatches = $("#catches");
-    const addForm = $("#addForm");
+    const $addForm = $("#addForm");
 
     let btnLoad = $("#aside").find(".load");
     let btnAdd = $("#aside").find(".add");
@@ -32,16 +32,16 @@ async function attachEvents() {
     }
 
     async function addCatch() {
-        let newFish = getNewCatch(addForm);
+        let catchedFish = buildCatch($addForm);
         try {
-            await sendRequest('POST', "biggestCatches", newFish);
+            await sendRequest('POST', "biggestCatches", catchedFish);
             loadCatches();
         } catch(error) {
             handleError(error);
         }
     }
 
-    function getNewCatch($inputForm) {
+    function buildCatch($inputForm) {
         let angler = $inputForm.find(".angler");
         let weight = $inputForm.find(".weight");
         let species = $inputForm.find(".species");
@@ -80,7 +80,6 @@ async function attachEvents() {
         let body = getNewCatch(element);
         let id = element.prop("data-id");
         try {
-            debugger;
             await sendRequest('PUT', `biggestCatches/${id}`, body)
             loadCatches();
         } catch(error) {
