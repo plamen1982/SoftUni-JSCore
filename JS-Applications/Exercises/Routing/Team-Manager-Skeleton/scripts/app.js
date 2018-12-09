@@ -18,6 +18,7 @@ $(() => {
         this.route('get', '#/catalog', displayCatalogs);
 
         this.route('get', '#/create', displayCreateCatalog);
+        this.route('post', '#/create', postCreateCatalog);
 
         function displayHome(context) {
 
@@ -107,7 +108,7 @@ $(() => {
             auth.logout()
                 .then(() => {
                     sessionStorage.clear();
-                    auth.showInfo('Successfuly logout');
+                    auth.showInfo('Successful logout');
                     context.redirect('#/home');
                 }).catch(auth.handleError);
         }
@@ -145,6 +146,17 @@ $(() => {
                 this.partial('./templates/create/createPage.hbs');
             });
         }
+
+        function postCreateCatalog(context) {
+            let teamName = context.params.name;
+            let teamComment = context.params.comment;
+            teamsService.createTeam(teamName, teamComment)
+                .then((team) => {
+                    auth.showInfo('Team created');
+                    this.redirect('#/catalog')
+                }).catch(auth.handleError);
+        }
+
     });
 
     app.run();
