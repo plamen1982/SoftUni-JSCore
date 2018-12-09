@@ -4,6 +4,7 @@ $(() => {
         this.use('Handlebars', 'hbs');
         this.route('get', '/index.html', displayHome);
         this.route('get', '#/home', displayHome);
+
         this.route('get', '#/about', displayAbout);
 
         this.route('get', '#/login', displayLogin);
@@ -13,6 +14,8 @@ $(() => {
         this.route('post', '#/register', postRegister);
 
         this.route('get', '#/logout', logout);
+
+        this.route('get', '#/catalog', displayCatalogs);
 
         function displayHome(context) {
 
@@ -81,7 +84,7 @@ $(() => {
                 header: './templates/common/header.hbs',
                 footer: './templates/common/footer.hbs',
                 registerForm: './templates/register/registerForm.hbs',
-            }).then(function(context) {
+            }).then(function() {
                 this.partial('./templates/register/registerPage.hbs');
             }).catch(auth.handleError);
         }
@@ -107,6 +110,26 @@ $(() => {
                 }).catch(auth.handleError);
         }
 
+        function displayCatalogs(context) {
+            context.loggedIn = !!(sessionStorage.getItem('authtoken'));
+            context.username = sessionStorage.getItem('username');
+            context.teamId = !!(sessionStorage.getItem('teamId'));
+            context.hasNotTeam = !!(sessionStorage.getItem('teamId'));
+
+            this.loadPartials({
+                header: './templates/common/header.hbs',
+                footer: './templates/common/footer.hbs',
+                team: './templates/catalog/team.hbs',
+            }).then(function() {
+                teamsService.loadTeams()
+                .then((catalogs) => {
+
+                    context.teams = catalogs;
+                    this.partial('./templates/catalog/teamCatalog.hbs');
+                })
+                
+            }).catch(auth.handleError);
+        }
     });
 
     app.run();
