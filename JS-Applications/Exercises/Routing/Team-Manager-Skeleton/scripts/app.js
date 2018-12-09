@@ -12,6 +12,7 @@ $(() => {
         this.route('get', '#/register', displayRegister);
         this.route('post', '#/register', postRegister);
 
+        this.route('get', '#/logout', logout);
 
         function displayHome(context) {
 
@@ -65,7 +66,7 @@ $(() => {
             auth.login(username, password)
                 .then((userInfo) => {
                     auth.saveSession(userInfo);
-                    auth.showInfo('You are logged in')
+                    auth.showInfo('Successful login')
                     this.redirect('#/home');
                 }).catch(auth.handleError);
         }
@@ -92,10 +93,20 @@ $(() => {
 
             password !== repeatPassword ? auth.showError('The given passwords doesn\'t matched') : auth.register(username, password).then((userInfo) => {
                 auth.saveSession(userInfo);
-                auth.showInfo('The registration is successful')
+                auth.showInfo('Successful registration');
                 this.redirect('#/home');
             }).catch(auth.handleError);
         }
+
+        function logout(context) {
+            auth.logout()
+                .then(() => {
+                    sessionStorage.clear();
+                    auth.showInfo('Successfuly logout');
+                    context.redirect('#/home');
+                }).catch(auth.handleError);
+        }
+
     });
 
     app.run();
