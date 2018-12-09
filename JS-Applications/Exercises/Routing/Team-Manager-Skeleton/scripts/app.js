@@ -7,10 +7,10 @@ $(() => {
         this.route('get', '#/about', displayAbout);
 
         this.route('get', '#/login', displayLogin);
-        this.route('post', '#/login', sendLogin);
+        this.route('post', '#/login', postLogin);
 
         this.route('get', '#/register', displayRegister);
-        this.route('post', '#/register', sendRegister);
+        this.route('post', '#/register', postRegister);
 
 
         function displayHome(context) {
@@ -19,7 +19,7 @@ $(() => {
             context.username = sessionStorage.getItem('username');
             context.teamId = !!(sessionStorage.getItem('teamId'));
 
-            context.loadPartials({
+            this.loadPartials({
                 header: './templates/common/header.hbs',
                 footer: './templates/common/footer.hbs',
             }).then(function(context) {
@@ -58,8 +58,18 @@ $(() => {
             }).catch(auth.handleError);
         }
 
-        function sendLogin(context) {
-            auth.post()
+        function postLogin(context) {
+            let username = context.params.username;
+            let password = context.params.password;
+
+            auth.login(username, password)
+                .then((userInfo) => {
+                    auth.saveSession(userInfo);
+                    auth.showInfo('You are logged in')
+                    this.redirect('#/home');
+                }).catch((error) => {
+                    auth.handleError(error);
+                });
         }
 
         function displayRegister(context) {
@@ -77,17 +87,17 @@ $(() => {
             }).catch(auth.handleError);
         }
 
-        function sendRegister(context) {
+        function postRegister(context) {
             let username = context.params.username;
             let password = context.params.password;
             let repeatPassword = context.params.repeatPassword;
 
-            password !== repeatPassword ? auth.showError('The given passwords doesn\'t matched') : auth.register(username, password).then(function(userInfo) {
+            password !== repeatPassword ? auth.showError('The given passwords doesn\'t matched') : auth.register(username, password).then((userInfo) => {
                 auth.saveSession(userInfo);
                 auth.showInfo('The registration is successful')
-                displayHome(context);
+                this.redirect('#/home');
             }).catch(function(error) {
-                auth.handleError(error)
+                auth.handleError(error);
             });
         }
     });
