@@ -31,7 +31,7 @@ $(() => {
 
         function displayAbout(context) {
 
-            context.loggedId = !!(sessionStorage.getItem('authtoke'));
+            context.loggedIn = !!(sessionStorage.getItem('authtoken'));
             context.username = sessionStorage.getItem('username');
             context.teamId = !!(sessionStorage.getItem('teamId'));
 
@@ -45,7 +45,7 @@ $(() => {
 
         function displayLogin(context) {
 
-            context.loggedId = !!(sessionStorage.getItem('authtoke'));
+            context.loggedIn = !!(sessionStorage.getItem('authtoken'));
             context.username = sessionStorage.getItem('username');
             context.teamId = !!(sessionStorage.getItem('teamId'));
 
@@ -67,14 +67,12 @@ $(() => {
                     auth.saveSession(userInfo);
                     auth.showInfo('You are logged in')
                     this.redirect('#/home');
-                }).catch((error) => {
-                    auth.handleError(error);
-                });
+                }).catch(auth.handleError);
         }
 
         function displayRegister(context) {
 
-            context.loggedId = !!(sessionStorage.getItem('authtoke'));
+            context.loggedIn = !!(sessionStorage.getItem('authtoken'));
             context.username = sessionStorage.getItem('username');
             context.teamId = !!(sessionStorage.getItem('teamId'));
 
@@ -96,10 +94,9 @@ $(() => {
                 auth.saveSession(userInfo);
                 auth.showInfo('The registration is successful')
                 this.redirect('#/home');
-            }).catch(function(error) {
-                auth.handleError(error);
-            });
+            }).catch(auth.handleError);
         }
     });
+
     app.run();
 });
