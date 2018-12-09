@@ -17,6 +17,8 @@ $(() => {
 
         this.route('get', '#/catalog', displayCatalogs);
 
+        this.route('get', '#/create', displayCreateCatalog);
+
         function displayHome(context) {
 
             context.loggedIn = !!(sessionStorage.getItem('authtoken'));
@@ -114,7 +116,7 @@ $(() => {
             context.loggedIn = !!(sessionStorage.getItem('authtoken'));
             context.username = sessionStorage.getItem('username');
             context.teamId = !!(sessionStorage.getItem('teamId'));
-            context.hasNotTeam = !!(sessionStorage.getItem('teamId'));
+            context.hasNoTeam = !!(sessionStorage.getItem('teamId'));
 
             this.loadPartials({
                 header: './templates/common/header.hbs',
@@ -129,6 +131,19 @@ $(() => {
                 })
                 
             }).catch(auth.handleError);
+        }
+
+        function displayCreateCatalog(context) {
+            context.loggedIn = !!(sessionStorage.getItem('authtoken'));
+            context.username = sessionStorage.getItem('username');
+
+            this.loadPartials({
+                header: './templates/common/header.hbs',
+                footer: './templates/common/footer.hbs',
+                createForm: './templates/create/createForm.hbs',
+            }).then(function() {
+                this.partial('./templates/create/createPage.hbs');
+            });
         }
     });
 
