@@ -6,6 +6,7 @@ $(() => {
         this.route('get', '#/home', displayHome);;
         this.route('get', '#/about', displayAbout);
         this.route('get', '#/login', displayLogin);
+        this.route('get', '#/register', displayRegister);
 
         function displayHome(context) {
 
@@ -47,6 +48,21 @@ $(() => {
                 loginForm: './templates/login/loginForm.hbs',
             }).then(function(context) {
                 this.partial('./templates/login/loginPage.hbs');
+            }).catch(auth.handleError);
+        }
+
+        function displayRegister(context) {
+
+            context.loggedId = !!(sessionStorage.getItem('authtoke'));
+            context.username = sessionStorage.getItem('username');
+            context.teamId = !!(sessionStorage.getItem('teamId'));
+
+            this.loadPartials({
+                header: './templates/common/header.hbs',
+                footer: './templates/common/footer.hbs',
+                registerForm: './templates/register/registerForm.hbs',
+            }).then(function(context) {
+                this.partial('./templates/register/registerPage.hbs');
             }).catch(auth.handleError);
         }
     });
