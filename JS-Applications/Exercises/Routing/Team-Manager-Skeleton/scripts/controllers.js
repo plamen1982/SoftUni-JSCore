@@ -1,4 +1,4 @@
-(() => {
+const Ctrl = (() => {
     function editTeam(context) {
 
         let teamName = context.params.name;
@@ -148,7 +148,6 @@
       context.loggedIn = sessionStorage.getItem("authtoken") !== null;
       context.username = sessionStorage.getItem("username");
 
-
       teamsService.loadTeams()
       .then(function (teams) {
           context.hasNoTeam = sessionStorage.getItem("teamId") === null
@@ -221,5 +220,23 @@
               auth.showInfo("Joined team!")
               displayCatalogs(context);
           }).catch(auth.handleError)
+  }
+
+  return {
+      editTeam,
+      displayEditTeam,
+      leaveTeam,
+      displayHome,
+      displayAbout,
+      displayLogin,
+      postLogin,
+      displayRegister,
+      postRegister,
+      logout,
+      displayCatalogs,
+      displayCreateCatalog,
+      postCreateCatalog,
+      displayDetailsTeam,
+      joinTeam,
   }
 })();
