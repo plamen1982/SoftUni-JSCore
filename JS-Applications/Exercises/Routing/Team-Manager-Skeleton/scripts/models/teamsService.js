@@ -23,7 +23,6 @@ let teamsService = (() => {
             name: name,
             comment: comment
         };
-
         return requester.post('appdata', 'teams', 'kinvey', teamData);
     }
 

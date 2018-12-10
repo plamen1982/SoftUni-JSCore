@@ -1,7 +1,7 @@
 $(() => {
   const app = Sammy("#main", function() {
-    // TODO: Define all the routes
     this.use("Handlebars", "hbs");
+
     this.route("get", "/index.html", displayHome);
     this.route("get", "#/home", displayHome);
 
@@ -22,12 +22,16 @@ $(() => {
 
     this.route("get", "#/catalog/:id", displayDetailsTeam);
 
+    this.route("get", "#/join/:teamId", joinTeam);
+
+    this.route("get", "#/leave", leaveTeam);
+    //ok
     function displayHome(context) {
       context.loggedIn = !!sessionStorage.getItem("authtoken");
       context.username = sessionStorage.getItem("username");
       context.teamId = !!sessionStorage.getItem("teamId");
 
-      this.loadPartials({
+      context.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs"
       })
@@ -40,11 +44,10 @@ $(() => {
     }
 
     function displayAbout(context) {
-      context.loggedIn = !!sessionStorage.getItem("authtoken");
+      context.loggedIn = sessionStorage.getItem("authtoken") !== null;
       context.username = sessionStorage.getItem("username");
-      context.teamId = !!sessionStorage.getItem("teamId");
 
-      this.loadPartials({
+      context.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs"
       })
@@ -57,9 +60,8 @@ $(() => {
     function displayLogin(context) {
       context.loggedIn = !!sessionStorage.getItem("authtoken");
       context.username = sessionStorage.getItem("username");
-      context.teamId = !!sessionStorage.getItem("teamId");
 
-      this.loadPartials({
+      context.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
         loginForm: "./templates/login/loginForm.hbs"
@@ -85,11 +87,10 @@ $(() => {
     }
 
     function displayRegister(context) {
-      context.loggedIn = !!sessionStorage.getItem("authtoken");
+      context.loggedIn = sessionStorage.getItem("authtoken") !== null;
       context.username = sessionStorage.getItem("username");
-      context.teamId = !!sessionStorage.getItem("teamId");
 
-      this.loadPartials({
+      context.loadPartials({
         header: "./templates/common/header.hbs",
         footer: "./templates/common/footer.hbs",
         registerForm: "./templates/register/registerForm.hbs"
@@ -112,7 +113,7 @@ $(() => {
             .then(userInfo => {
               auth.saveSession(userInfo);
               auth.showInfo("Successful registration");
-              this.redirect("#/home");
+              displayHome(context);
             })
             .catch(auth.handleError);
     }
@@ -129,23 +130,23 @@ $(() => {
     }
 
     function displayCatalogs(context) {
-      context.loggedIn = !!sessionStorage.getItem("authtoken");
+      context.loggedIn = sessionStorage.getItem("authtoken") !== null;
       context.username = sessionStorage.getItem("username");
-      context.teamId = !!sessionStorage.getItem("teamId");
-      context.hasNoTeam = !!sessionStorage.getItem("teamId");
 
-      this.loadPartials({
-        header: "./templates/common/header.hbs",
-        footer: "./templates/common/footer.hbs",
-        team: "./templates/catalog/team.hbs"
+
+      teamsService.loadTeams()
+      .then(function (teams) {
+          context.hasNoTeam = sessionStorage.getItem("teamId") === null
+              || sessionStorage.getItem("teamId") === "undefined";
+          context.teams = teams.reverse();
+          context.loadPartials({
+              header: "./templates/common/header.hbs",
+              footer: "./templates/common/footer.hbs",
+              team: "./templates/catalog/team.hbs"
+          }).then(function () {
+              this.partial("./templates/catalog/teamCatalog.hbs")
+          })
       })
-        .then(function() {
-          teamsService.loadTeams().then(catalogs => {
-            context.teams = catalogs.reverse();
-            this.partial("./templates/catalog/teamCatalog.hbs");
-          });
-        })
-        .catch(auth.handleError);
     }
 
     function displayCreateCatalog(context) {
@@ -174,25 +175,41 @@ $(() => {
     }
 
     function displayDetailsTeam(context) {
-      const teamId = context.params.id;
 
-      this.loadPartials({
-        header: "./templates/common/header.hbs",
-        footer: "./templates/common/footer.hbs",
-        teamControls: "./templates/catalog/teamControls.hbs",
-        teamMember: "./templates/catalog/teamMember.hbs"
-      }).then(function() {
-            teamsService.loadTeamDetails(teamId)
-          .then(team => {
-            auth.showInfo(`${team.name} is loaded`);
-            context.name = team.name;
-            context.comment = team.comment;
-          })
-          .then(() => {
-            this.partial("./templates/catalog/details.hbs");
-          })
-          .catch(auth.handleError);
-      });
+      let id = context.params.id;
+      teamsService.loadTeamDetails(id)
+          .then(function (teamInfo) {
+              context.loggedIn = sessionStorage.getItem("authtoken") !== null;
+              context.username = sessionStorage.getItem("username");
+              context.teamId = id;
+              context.name = teamInfo.name;
+              context.comment = teamInfo.comment;
+              context.isOnTeam = teamInfo._id === sessionStorage.getItem("teamId");
+              context.isAuthor = teamInfo._acl.creator === sessionStorage.getItem("userId");
+              context.loadPartials({
+                  header: "./templates/common/header.hbs",
+                  footer: "./templates/common/footer.hbs",
+                  teamControls: './templates/catalog/teamControls.hbs',
+              }).then(function () {
+                  this.partial('./templates/catalog/details.hbs')
+              })
+
+          }).catch(auth.handleError)
+    }
+
+    function joinTeam(context) {
+      let teamId = context.params.teamId;
+
+      teamsService.joinTeam(teamId)
+          .then((userInfo) => {
+              auth.saveSession(userInfo);
+              auth.showInfo("Joined team!")
+              displayCatalogs(context);
+          }).catch(auth.handleError)
+  }
+
+    function leaveTeam(context) {
+
     }
   });
 
