@@ -25,7 +25,31 @@ $(() => {
     this.route("get", "#/join/:teamId", joinTeam);
 
     this.route("get", "#/leave", leaveTeam);
+
+    this.route("get", "#/edit/:teamId", editTeam);
+    this.route("post", "#/edit/:teamId", editTeam);
     
+    function editTeam(context) {
+      context.loggedIn = !!sessionStorage.getItem("authtoken");
+      context.username = sessionStorage.getItem("username");
+      
+        let teamId = context.params.teamId;
+        teamsService.loadTeamDetails(teamId)
+          .then(function(teamInfo) {
+              context.teamId = teamId;
+              context.name = teamInfo.name;
+              context.comment = teamInfo.comment;
+
+              context.loadPartials({
+                header: "./templates/common/header.hbs",
+                footer: "./templates/common/footer.hbs",
+                editForm: `./templates/edit/editForm.hbs`
+              }).then(function() {
+                this.partial('./templates/edit/editPage.hbs');
+              })
+          });
+    }
+
     function leaveTeam(context) {
       teamsService.leaveTeam().then((userInfo) => {
         auth.saveSession(userInfo);
