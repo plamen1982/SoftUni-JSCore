@@ -26,10 +26,23 @@ $(() => {
 
     this.route("get", "#/leave", leaveTeam);
 
-    this.route("get", "#/edit/:teamId", editTeam);
+    this.route("get", "#/edit/:teamId", displayEditTeam);
     this.route("post", "#/edit/:teamId", editTeam);
-    
+
     function editTeam(context) {
+
+        let teamName = context.params.name;
+        let teamComment = context.params.comment;
+        let teamId = context.params.teamId;
+
+        teamsService.edit(teamId, teamName, teamComment)
+            .then(function () {
+                auth.showInfo("Team was edited correctly!");
+                displayCatalogs(context);
+            }).catch(auth.handleError);
+    }
+    
+    function displayEditTeam(context) {
       context.loggedIn = !!sessionStorage.getItem("authtoken");
       context.username = sessionStorage.getItem("username");
       
