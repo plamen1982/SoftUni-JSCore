@@ -25,7 +25,15 @@ $(() => {
     this.route("get", "#/join/:teamId", joinTeam);
 
     this.route("get", "#/leave", leaveTeam);
-    //ok
+    
+    function leaveTeam(context) {
+      teamsService.leaveTeam().then((userInfo) => {
+        auth.saveSession(userInfo);
+        auth.showInfo('You leaved the team!');
+        displayCatalogs(context);
+      })
+    }
+
     function displayHome(context) {
       context.loggedIn = !!sessionStorage.getItem("authtoken");
       context.username = sessionStorage.getItem("username");
@@ -208,9 +216,7 @@ $(() => {
           }).catch(auth.handleError)
   }
 
-    function leaveTeam(context) {
 
-    }
   });
 
   app.run();
