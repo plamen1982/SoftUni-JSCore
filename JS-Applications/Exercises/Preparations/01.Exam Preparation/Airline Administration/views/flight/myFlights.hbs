@@ -1,0 +1,21 @@
+    <section id="viewMyFlights">
+        <h3>Your Flights</h3>
+        {{#each flights}}
+            <div class="flight-ticket">
+                <div class="flight-left">
+                    <img src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg" alt="">
+                </div>
+                <div class="flight-right">
+                    <div>
+                        <h3>{{destination}}</h3><span>{{departure}}</span>
+                    </div>
+                    <div>
+                        from {{origin}} <span>{{time}}</span>
+                    </div>
+                    <p>{{seats}} Seats ({{cost}}$ per seat) </p>
+                    <a href="#/remove/{{_id}}" class="remove">REMOVE</a>
+                    <a href="#/flights/{{_id}}" class="details">Details</a>
+                </div>
+            </div>
+        {{/each}}
+    </section>

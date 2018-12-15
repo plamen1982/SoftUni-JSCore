@@ -5,6 +5,8 @@ const flight = (function() {
     const addGet = function(ctx) {
         if(!userModel.isAuthorized()) {
             ctx.redirect('#/login');
+
+            return;
         }
         ctx.partial('views/flight/add.hbs');
     }
@@ -15,6 +17,7 @@ const flight = (function() {
         
         if(!ctx.params.destination || !ctx.params.origin || !ctx.params.cost || !ctx.params.seats) {
             notifications.showError('Please fill the fields!');
+
             return;
         }
 
@@ -32,6 +35,7 @@ const flight = (function() {
             .done(function(flight) {
                 if (!flight) {
                     ctx.redirect('#/');
+
                     return;
                 }
                 if (flight._acl.creator !== storage.getData('userInfo').id) {
@@ -53,6 +57,7 @@ const flight = (function() {
                 if(flight._acl.creator !==storage.getData('userInfo').id) {
                     notifications.showError('You can only edit your own flights');
                     ctx.redirect('#/flight' + flight._id);
+
                     return;
                 }
 
@@ -78,11 +83,35 @@ const flight = (function() {
             });
     }
 
+// MYFLIGHTS GET ----------------------------------------------------------
+
+    const myFlights = function(ctx) {
+        debugger
+        if(!userModel.isAuthorized()) {
+            ctx.redirect('#/login');
+
+            return;
+        }
+        debugger;
+        const userId = storage.getData('userInfo').id;
+        flightModel.myFlights(userId)
+            .done(function(flights) {
+                ctx.flights = flights;
+                ctx.partial('views/flight/myFlights.hbs');
+            })
+
+    }
+
+// DELETE POST ----------------------------------------------------------
+
     return {
         addGet,
         addPost,
         details,
         editGet,
         editPut,
+        // deleteGet,
+        // deletePost,
+        myFlights,
     }
 })();

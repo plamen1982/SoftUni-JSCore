@@ -43,7 +43,7 @@ const user = (function(){
         userModel.register(ctx.params).done(function(data){
             storage.saveUser(data);
             notifications.showInfo('Register successful!');    
-            debugger;        
+    
             ctx.redirect('#/');
         });
     }

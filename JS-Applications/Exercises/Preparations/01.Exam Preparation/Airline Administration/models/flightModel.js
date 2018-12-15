@@ -51,10 +51,17 @@ const flightModel = (function() {
         return requester.put(url, flight);
     }
 
+//GET MY FLIGHTS----------------------------------------------------------
+    const myFlights = function(userId) {
+        const url = `${flightUrl}?query={"_acl.creator":"${userId}"}`;
+        return requester.get(url);
+    }
+
     return {
         add,
         publicFlights,
         getFlight,
         edit,
+        myFlights,
     }
 })();
