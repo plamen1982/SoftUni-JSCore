@@ -1,6 +1,6 @@
 const userModel = (function () {
     var userUrl = `user/${storage.appKey}`;
-
+// LOGIN----------------------------------------------------------
     const login = function(username, password){
         var authString = btoa(`${username}:${password}`);
         var headers = { 
@@ -12,13 +12,13 @@ const userModel = (function () {
         
         return requester.post(url, data, headers);
     };
-
+// LOGOUT----------------------------------------------------------
     const logout = function(){
         var url = userUrl +  '/_logout';
 
         return requester.post(url);
     }
-
+//REGISTER----------------------------------------------------------
     const register = function(params){
         var data = {
             username: params.username,
@@ -30,7 +30,7 @@ const userModel = (function () {
         
         return requester.post(userUrl, data, headers);
     };
-
+//ISAUTHORIZED----------------------------------------------------------
     const isAuthorized = function(){
         return !!storage.getData('authToken');
     };

@@ -1,19 +1,12 @@
-<section id="viewMyFlights">
-    <h3>Your Flights</h3>
-    <div class="flight-ticket">
-        <div class="flight-left">
-            <img src="http://airportcluj.ro/fisiere/userfiles/Bari_28.03.07_088.jpg" alt="">
-        </div>
-        <div class="flight-right">
-            <div>
-                <h3>CLUJ-NAPOCA</h3><span>15 January</span>
-            </div>
-            <div>
-                from Sheffield <span>14:00</span>
-            </div>
-            <p>55 Seats (13.12$ per seat) </p>
-            <a href="" class="remove">REMOVE</a>
-            <a href="" class="details">Details</a>
-        </div>
+<section id="viewCatalog" class="background-img">
+    <a href="#/flight/add" class="add-flight">Add Flight +</a>
+    <div class="added-flights">
+        {{#each flights}}
+            <a href="#/details/{{_id}}" class="added-flight">
+                <img src={{image}} alt="" class="picture-added-flight">
+                <h3>{{destination}}</h3>
+                <span>from {{origin}}</span><span>{{departureDate}}</span>
+            </a>
+        {{/each}}
     </div>
 </section>

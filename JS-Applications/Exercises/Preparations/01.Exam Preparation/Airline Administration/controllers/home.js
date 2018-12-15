@@ -5,8 +5,12 @@ const home = (function () {
 
             return;
         }
-        ctx.partial('views/home/index.hbs');``
-
+        flightModel.publicFlights()
+                .done(function(flights) {
+                    ctx.flights = flights;
+                    ctx.partial('views/home/index.hbs');
+                })
+        
     };
 
     return {
