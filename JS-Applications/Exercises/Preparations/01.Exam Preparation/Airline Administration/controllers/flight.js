@@ -9,7 +9,7 @@ const flight = (function() {
 
     const addPost = function(ctx) {
         
-        if(!ctx.params.destination || !ctx.params.orgin || !ctx.params.departureDate || !ctx.params.departureTime || !ctx.params.seats || !ctx.params.cost || !ctx.params.img) {
+        if(!ctx.params.destination || !ctx.params.origin || !ctx.params.cost || !ctx.params.seats) {
             notifications.showError('Please fill the fields!');
             return;
         }
