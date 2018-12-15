@@ -14,6 +14,8 @@ const app = Sammy('#container', function(){
     this.get('#/flight/add', flight.addGet);
     this.post('#/flight/add', flight.addPost);
     this.get('#/flights/:flightId', flight.details);
+    this.get('#/edit/:flightId', flight.editGet);
+    this.put('#/edit/:flightId', flight.editPut);
 });
 
 $(function(){
