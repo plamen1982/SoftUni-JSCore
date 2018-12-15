@@ -1,0 +1,8 @@
+{{#ifCond team._acl.creator "==" user.id}}
+    <a href="#/edit/:{{team._id}}" class="btn btn-default">Edit Info</a>
+{{/ifCond}}
+{{#ifCond team._id "==" user.teamId}}
+    <a href="#/leave" class="btn btn-default">Leave Team</a>
+{{else}}
+    <a href="#/join/:{{team._id}}" class="btn btn-default">Join Team</a>
+{{/ifCond}}

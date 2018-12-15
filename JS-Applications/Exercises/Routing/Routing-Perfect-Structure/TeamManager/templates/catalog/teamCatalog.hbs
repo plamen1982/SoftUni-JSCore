@@ -1,0 +1,12 @@
+<div class="container">
+    {{#hasTeam}}
+    {{else}}
+        <a href="#/create" class="btn btn-default">Create Team</a>
+    {{/hasTeam}}
+    <h1>Catalog Page</h1>
+    <div>
+        {{#each teams}}
+            {{> team}}
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Team Managers App</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/details.css">
+    <link rel="stylesheet" href="./styles/team.css">
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="/node_modules/sammy/lib/min/sammy-0.7.6.min.js"></script>
+    <script src="/node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+
+</head>
+<body>
+<header>
+
+</header>
+<div class="notification">
+    <section id="loadingBox" class="loadingBox">Loading ...</section>
+
+    <section id="infoBox" class="infoBox">Info</section>
+
+    <section id="errorBox" class="errorBox"><span class="notification-text"></span><span
+            class="close-symbol">&#10006</span>
+    </section>
+</div>
+<div id="main">
+
+</div>
+<footer>
+
+</footer>
+<script src="./scripts/services/sessionHandler.js"></script>
+<script src="./scripts/services/requester.js"></script>
+<script src="./scripts/services/authenticator.js"></script>
+<script src="./scripts/services/notificationHandler.js"></script>
+<script src="./scripts/controller/view.js"></script>
+<script src="./scripts/services/teamService.js"></script>
+<script src="./scripts/controller/userManager.js"></script>
+<script src="./scripts/services/helperRegister.js"></script>
+<script src="./scripts/app.js"></script>
+</body>
+</html>
