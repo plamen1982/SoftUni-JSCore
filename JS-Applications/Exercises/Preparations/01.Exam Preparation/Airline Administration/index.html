@@ -11,8 +11,25 @@
 </head>
 
 <body>
+    <nav>
+        <div class="left-container">
+            <ul>
+                <li><a href="#/">Home</a></li>
+                <li><a href="">Flights</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/register">Register</a></li>
+            </ul>
+        </div>
+        <div class="right-container">
+                <div id="logoutContainer" class="d-none">
+                    <span>Welcome, <span id="welcomeUsername">{name}</span>!</span>
+                    <a href="#/logout" class="log-out">Logout</a>
+                </div>
+            </div>
+    </nav>
+    <div id="container">
 
-    <section class="container" id="container"></section>
+    </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/popper.js/dist/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

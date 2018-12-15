@@ -34,13 +34,16 @@ const user = (function(){
     };
 
     const postRegister = function(ctx) {
+
         if (ctx.params.username.length < 5 || !ctx.params.pass || ctx.params.pass !== ctx.params.checkPass) {
             notifications.showError('Username should be atleast 5 characters long and passwords must match!');
             return;
         }
+        
         userModel.register(ctx.params).done(function(data){
             storage.saveUser(data);
-            notifications.showInfo('Register successful!');            
+            notifications.showInfo('Register successful!');    
+            debugger;        
             ctx.redirect('#/');
         });
     }

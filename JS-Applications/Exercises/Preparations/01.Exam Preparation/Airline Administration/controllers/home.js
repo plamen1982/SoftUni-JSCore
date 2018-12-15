@@ -5,6 +5,7 @@ const home = (function () {
 
             return;
         }
+        ctx.partial('views/home/index.hbs');``
 
     };
 
