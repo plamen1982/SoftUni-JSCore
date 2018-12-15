@@ -1,6 +1,6 @@
 const flightModel = (function() {
     const flightUrl = `appdata/${storage.appKey}/flights`;
-//ADD FLIGHT ----------------------------------------------------------
+//ADD FLIGHT POST----------------------------------------------------------
     const add = function(params) {
         let flight = {
             "destination": params.destination,
@@ -14,14 +14,20 @@ const flightModel = (function() {
         }
         return requester.post(flightUrl, flight);
     }
-//PUBLIC FLIGHTS ----------------------------------------------------------
+//PUBLIC FLIGHTS GET----------------------------------------------------------
     const publicFlights = function() {
         const url = flightUrl + '?query={"isPublished":true}';
         return requester.get(url);
     }
+//GET FLIGHT GET----------------------------------------------------------
+    const getFlight = function(flightId) {
+        const url = `${flightUrl}/${flightId}`;
 
+        return requester.get(url);
+    }
     return {
         add,
         publicFlights,
+        getFlight,
     }
 })();

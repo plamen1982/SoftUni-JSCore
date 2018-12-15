@@ -5,6 +5,7 @@ const home = (function () {
 
             return;
         }
+        
         flightModel.publicFlights()
                 .done(function(flights) {
                     ctx.flights = flights;
