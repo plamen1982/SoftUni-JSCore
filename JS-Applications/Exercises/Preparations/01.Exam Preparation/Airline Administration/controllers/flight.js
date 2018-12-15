@@ -86,13 +86,13 @@ const flight = (function() {
 // MYFLIGHTS GET ----------------------------------------------------------
 
     const myFlights = function(ctx) {
-        debugger
+    
         if(!userModel.isAuthorized()) {
             ctx.redirect('#/login');
 
             return;
         }
-        debugger;
+
         const userId = storage.getData('userInfo').id;
         flightModel.myFlights(userId)
             .done(function(flights) {
@@ -104,14 +104,22 @@ const flight = (function() {
 
 // DELETE POST ----------------------------------------------------------
 
+    const deletePost = function(ctx) {
+        const flightId = ctx.params.flightId;
+        flightModel.deletePost(flightId)
+            .done(function() {
+                notifications.showInfo('You delete the flight successfuly');
+                ctx.redirect('#/');
+            });
+    }
+
     return {
         addGet,
         addPost,
         details,
         editGet,
         editPut,
-        // deleteGet,
-        // deletePost,
+        deletePost,
         myFlights,
     }
 })();

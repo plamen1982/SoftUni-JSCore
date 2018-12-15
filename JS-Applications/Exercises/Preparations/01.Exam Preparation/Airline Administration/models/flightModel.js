@@ -52,9 +52,17 @@ const flightModel = (function() {
     }
 
 //GET MY FLIGHTS----------------------------------------------------------
+
     const myFlights = function(userId) {
         const url = `${flightUrl}?query={"_acl.creator":"${userId}"}`;
         return requester.get(url);
+    }
+
+//POST DELETE POST----------------------------------------------------------
+
+    const deletePost = function(flightId) {
+        const url = `${flightUrl}/${flightId}`;
+        return requester.del(url);
     }
 
     return {
@@ -63,5 +71,6 @@ const flightModel = (function() {
         getFlight,
         edit,
         myFlights,
+        deletePost,
     }
 })();
