@@ -1,0 +1,42 @@
+<section class="basic">
+    <h1> Welcome to pet my pet!</h1>  
+    <section class="otherPet">
+    {{#each pets}}
+        <h3>Name: {{name}}</h3>
+        <p>Category: {{category}}</p>
+        <p class="img"><img src="{{imageURL}}"></p>
+        <p class="description">{{description}}</p>
+        <div class="pet-info">
+            <a href="#/upVote"><button class="button"><i class="fas fa-heart"></i> Pet</button></a>
+            <a href="#/details"><button class="button">Details</button></a>
+            <i class="fas fa-heart"></i> <span> {{likes}}</span>
+        </div>
+    {{/each}}
+</section>
+
+{{!--  { 
+
+        "name": "Lilly", 
+
+        "description":"This is my cat Lilly. She is 2 years old and is lazy", 
+
+        "imageURL":"https://www.bluecross.org.uk/sites/....jpg", 
+
+        "category":"Cat", 
+
+        "likes":"7" 
+
+        "_acl": { 
+
+            "creator": "5bb08c01eb7615589b4f360e" 
+
+        }, 
+
+        "_kmd": { 
+
+           "lmt": "2018-10-03T08:04:26.028Z", 
+
+           "ect": "2018-09-30T09:26:13.051Z" 
+
+      }  --}}              
+</section>

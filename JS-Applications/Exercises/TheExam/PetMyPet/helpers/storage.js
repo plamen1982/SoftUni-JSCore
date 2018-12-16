@@ -2,19 +2,19 @@ const storage = function () {
 
     // CHANGE appKey and appSecret;
 
-    const appKey = 'kid_S1Z2bda1N';
-    const appSecret = '30d60cad52554089aedcd0f21a02073c';
+    const appKey = 'kid_Sy-gAAXxE';
+    const appSecret = '466f5d25309c40679efad3592aedecdb';
 
     const saveData = function (key, value) {
-        localStorage.setItem(appKey + key, JSON.stringify(value));
+        sessionStorage.setItem(appKey + key, JSON.stringify(value));
     };
 
     const getData = function (key) {
-        return JSON.parse(localStorage.getItem(appKey + key));
+        return JSON.parse(sessionStorage.getItem(appKey + key));
     };
 
     const deleteData = function(key) {
-        localStorage.removeItem(appKey + key);
+        sessionStorage.removeItem(appKey + key);
     };
 
     const saveUser = function(data){

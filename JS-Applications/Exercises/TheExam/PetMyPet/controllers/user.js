@@ -11,7 +11,7 @@ const user = (function(){
 
     const postLogin = function(ctx){
         var username = ctx.params.username;
-        var password = ctx.params.pass;
+        var password = ctx.params.password;
         
         userModel.login(username, password).done(function(data){
             storage.saveUser(data);
@@ -41,15 +41,18 @@ const user = (function(){
     };
 
     const postRegister = function(ctx) {
-        if (ctx.params.username.length < 5 || !ctx.params.pass || ctx.params.pass !== ctx.params.checkPass) {
-            notifications.showError('Username should be atleast 5 characters long and passwords must match!');
+        if (ctx.params.username.length < 3 || ctx.params.password.length > 5) {
+
+            userModel.register(ctx.params).done(function(data){
+                storage.saveUser(data);
+                notifications.showInfo('User registration successful.');            
+                ctx.redirect('#/');
+            });
+        } else {
+            notifications.showError('Username must be at least 3 symbols", "Password must be at least 6 symbols');
             return;
         }
-        userModel.register(ctx.params).done(function(data){
-            storage.saveUser(data);
-            notifications.showInfo('Register successful!');            
-            ctx.redirect('#/');
-        });
+
     }
 
  // INITIALIZE-LOGIN-----------------------------------------------------------------------------------------------
@@ -57,13 +60,13 @@ const user = (function(){
     const initializeLogin = function(){
         let userInfo = storage.getData('userInfo');
 // check the html id's and classes d-none is OK
+        debugger
         if(userModel.isAuthorized()){
-            $('#welcomeUsername').text(userInfo.username);
-            $('#logoutContainer').removeClass('d-none');
-            $('.guestNav').addClass('d-none');
+            
+            $('#username').text(`Welcome, ${userInfo.username}`);
+            $('.navbar-anonymous').remove();
         } else {
-            $('#logoutContainer').addClass('d-none');
-            $('.guestNav').removeClass('d-none');
+            $('.navbar-dashboard').remove();
         }
     };
 

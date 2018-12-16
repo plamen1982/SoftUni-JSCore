@@ -1,0 +1,35 @@
+<section class="detailsMyPet">
+    <h3>{{pet.name}}</h3>
+    <p>Pet counter: <i class="fas fa-heart"></i> {{pet.likes}}</p>
+    <p class="img"><img src="{{pet.imageURL}}"></p>
+    <form action="#/edit/{{pet._id}}" method="PUT">
+        <textarea type="text" name="description">{{pet.description}}</textarea>
+        <button class="button"> Save</button>
+    </form>
+</section>
+
+{{!--  { 
+
+        "name": "Lilly", 
+
+        "description":"This is my cat Lilly. She is 2 years old and is lazy", 
+
+        "imageURL":"https://www.bluecross.org.uk/sites/....jpg", 
+
+        "category":"Cat", 
+
+        "likes":"7" 
+
+        "_acl": { 
+
+            "creator": "5bb08c01eb7615589b4f360e" 
+
+        }, 
+
+        "_kmd": { 
+
+           "lmt": "2018-10-03T08:04:26.028Z", 
+
+           "ect": "2018-09-30T09:26:13.051Z" 
+
+      }  --}}

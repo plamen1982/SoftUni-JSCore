@@ -1,7 +1,12 @@
 const user = (function(){
+
+// LOGIN----------------------------------------------------------
+
     const getLogin = function(ctx){
-        if (userModel.isAuthorized()) {
+        if (!userModel.isAuthorized()) {
             ctx.redirect('#/');
+
+            return;
         }
         ctx.partial('views/user/login.hbs');
     };
@@ -10,12 +15,14 @@ const user = (function(){
         var username = ctx.params.username;
         var password = ctx.params.pass;
         
-        userModel.login(username, password).done(function(data){
-            storage.saveUser(data);
+        userModel.login(username, password).done(function(userInfo){
+            storage.saveUser(userInfo);
             notifications.showInfo('Login successful!');            
             ctx.redirect('#/');
         });
     };
+
+// LOGOUT----------------------------------------------------------
 
     const logout = function(ctx){
         userModel.logout().done(function(){
@@ -25,6 +32,8 @@ const user = (function(){
             ctx.redirect('#/');
         });
     }
+
+// REGISTER----------------------------------------------------------
 
     const getRegister = function(ctx) {
         if (userModel.isAuthorized()) {
@@ -48,6 +57,8 @@ const user = (function(){
         });
     }
 
+// INITIALIZE-LOGIN----------------------------------------------------------
+
     const initializeLogin = function(){
         let userInfo = storage.getData('userInfo');
 
@@ -67,6 +78,6 @@ const user = (function(){
         logout,
         getRegister,
         postRegister,
-        initializeLogin
+        initializeLogin,
     };
 }());
