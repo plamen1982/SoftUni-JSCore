@@ -1,4 +1,7 @@
 const notifications = (function () {
+
+    //CHECK id's in main index.html #loadingBox, #errorBox and #infoBox info and error Box should have <span> element inside
+
     $(document).on({
         ajaxStart: function () {
             $('#loadingBox').show();
@@ -43,7 +46,8 @@ const notifications = (function () {
         showError(errorMsg);
     }
 
-    return {
-        showInfo, showError, handleAjaxError
-    }
+    return { showInfo, 
+             showError, 
+             handleAjaxError,
+            }
 }());

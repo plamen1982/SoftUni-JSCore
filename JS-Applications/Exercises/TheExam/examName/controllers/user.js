@@ -1,4 +1,7 @@
 const user = (function(){
+
+ // LOGIN-----------------------------------------------------------------------------------------------
+   
     const getLogin = function(ctx){
         if (userModel.isAuthorized()) {
             ctx.redirect('#/');
@@ -17,6 +20,8 @@ const user = (function(){
         });
     };
 
+ // LOGOUT-----------------------------------------------------------------------------------------------
+
     const logout = function(ctx){
         userModel.logout().done(function(){
             storage.deleteUser();
@@ -25,6 +30,8 @@ const user = (function(){
             ctx.redirect('#/');
         });
     }
+
+ // REGISTER-----------------------------------------------------------------------------------------------
 
     const getRegister = function(ctx) {
         if (userModel.isAuthorized()) {
@@ -45,9 +52,11 @@ const user = (function(){
         });
     }
 
+ // INITIALIZE-LOGIN-----------------------------------------------------------------------------------------------
+
     const initializeLogin = function(){
         let userInfo = storage.getData('userInfo');
-
+// check the html id's and classes d-none is OK
         if(userModel.isAuthorized()){
             $('#welcomeUsername').text(userInfo.username);
             $('#logoutContainer').removeClass('d-none');

@@ -1,6 +1,7 @@
 const app = Sammy('#container', function(){
     this.use('Handlebars', 'hbs');
     this.before({except: {}}, function() {
+        //check classes and id's in initializeLogin()
         user.initializeLogin();
     });
 

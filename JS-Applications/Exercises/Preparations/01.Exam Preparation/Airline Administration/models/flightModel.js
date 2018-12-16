@@ -1,4 +1,5 @@
 const flightModel = (function() {
+    
     const flightUrl = `appdata/${storage.appKey}/flights`;
 
 //ADD FLIGHT POST----------------------------------------------------------
@@ -14,6 +15,7 @@ const flightModel = (function() {
             "image": params.img,
             "isPublished": !!params.public
         }
+
         return requester.post(flightUrl, flight);
     }
 
@@ -21,6 +23,7 @@ const flightModel = (function() {
 
     const publicFlights = function() {
         const url = flightUrl + '?query={"isPublished":true}';
+
         return requester.get(url);
     }
 
@@ -37,7 +40,7 @@ const flightModel = (function() {
     const edit = function(params) {
         const url = `${flightUrl}/${params.flightId}`;
 
-        let flight = {
+        const flight = {
             "destination": params.destination,
             "origin": params.origin,
             "departure": params.departure,
@@ -55,6 +58,7 @@ const flightModel = (function() {
 
     const myFlights = function(userId) {
         const url = `${flightUrl}?query={"_acl.creator":"${userId}"}`;
+
         return requester.get(url);
     }
 
@@ -62,6 +66,7 @@ const flightModel = (function() {
 
     const deletePost = function(flightId) {
         const url = `${flightUrl}/${flightId}`;
+
         return requester.del(url);
     }
 

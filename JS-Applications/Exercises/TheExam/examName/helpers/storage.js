@@ -1,4 +1,7 @@
 const storage = function () {
+
+    // CHANGE appKey and appSecret;
+
     const appKey = 'kid_S1Z2bda1N';
     const appSecret = '30d60cad52554089aedcd0f21a02073c';
 
