@@ -1,0 +1,112 @@
+##################################################################################################################################################################################################
+#	IMPORTANT !!!!																																												 #
+# This document contains examples for the input fields. You can use it for fillers in your forms. All images and videos url included below are free and were found on random internet searches.	 #
+# We don't own any of this content nor promote any of the authors! 																																 #
+# If you are interested in our trainings visit us on https://softuni.org																														 #
+#																																																 #
+##################################################################################################################################################################################################
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Course name:
+Angular
+
+Image url:
+https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png
+
+Lectures list:
+Intro to Angular
+https://www.youtube.com/embed/9RG3MiEBEIw
+
+Components
+https://www.youtube.com/embed/16rQyEQtpyQ
+
+Services
+https://www.youtube.com/embed/69VeYoKzL6I
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Course name:
+React
+
+Image url:
+https://cdn-images-1.medium.com/max/1200/1*3SVfBkNZI2f-sspiq59xcw.png
+
+Lectures list:
+Intro React
+https://www.youtube.com/embed/ycstRj2i66k
+
+Redux
+https://www.youtube.com/embed/93p3LxR9xfM
+
+Router
+https://www.youtube.com/embed/91F8reC8kvo
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Course name:
+Express
+
+Image url:
+https://cdn-images-1.medium.com/max/1000/1*alZcSIb0lcN7gQIx2tJ_tg.png
+
+Lectures list:
+Conrollers
+https://www.youtube.com/embed/ucuNgSOFDZ0
+
+Routing
+https://www.youtube.com/embed/tiMLxUKrB-g
+
+Architecture
+https://www.youtube.com/embed/pKd0Rpw7O48
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Course name:
+Symfony
+
+Image url:
+https://d1pwix07io15pr.cloudfront.net/v9b2c58a2d6/images/opengraph/symfony.png
+
+
+Lectures list:
+MVC
+https://www.youtube.com/embed/th0a26C9qB0
+
+Routing
+https://www.youtube.com/embed/aiLfp65Fq8I
+
+Services
+https://www.youtube.com/embed/XTY6rzf4PNw
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Course name:
+Spring MVC
+
+Image url:
+https://javainterviewpoint-7ac9.kxcdn.com/wp-content/uploads/2019/02/Spring-MVC-Tutorial.png
+
+Lectures list:
+Annotation based controller class
+https://www.youtube.com/embed/HokftiwyUuU
+
+Form Validation
+https://www.youtube.com/embed/nI-Qx06XRA8
+
+Web Services
+https://www.youtube.com/embed/1A3HnWzw8Ao
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Course name:
+ASP.NET
+
+Image url:
+https://ardalis.com/wp-content/uploads/2017/05/aspnetcore-logo-591x360.png
+
+Lectures list:
+Web APIs
+https://www.youtube.com/embed/aIkpVzqLuhA
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+

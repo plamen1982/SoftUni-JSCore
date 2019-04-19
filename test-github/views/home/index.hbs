@@ -1,0 +1,104 @@
+<div>
+    <div class="container mt-3">
+     <div class="row d-flex justify-content-center">
+            {{#if currentUser}}
+                {{#if isAdmin}}
+                <main>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="/admin/create-course"><button type="button" class="btn btn-primary btn-lg">Create Course</button></a>
+                    </div>
+                </div>
+                <div class="border border-light p-5">
+                    <h1 class="text-center">Choose Course</h1>
+                    <ul class="list-group">
+                        {{#if allCourses.length}}
+                            {{#each allCourses}}
+                            <li class="list-group-item">
+                                {{title}}
+                                <div class="float-right">
+                                    <div class="btn-group" role="group">
+                                        <a href="/admin/edit-course/{{_id}}"><button type="button" class="btn btn-warning">Edit Course</button></a>
+                                        <a href="/admin/add-lectures"><button type="button" class="btn btn-success">Add lectures</button></a>
+                                    </div>
+                                    Lectures in course
+                                    <span class="badge badge-primary badge-pill">{{lectures.length}}</span>
+                                </div>
+                            </li>
+                            {{/each}}
+                        {{else}}
+                            <div class="row">
+                                <div class="col text-center">
+                                    <a href="/admin/create-course"><button type="button" class="btn btn-primary btn-lg">Add Course</button></a>
+                                </div>
+                            </div>
+                            <h1>No courses in database. Please create one!</h1>
+                        {{/if}}
+
+                    </ul>
+                </div>
+                </main>
+                {{else}}
+        <main>
+            <h1 class="text-center">Courses</h1>
+
+            <form class="search">
+                <label>Search: </label>
+                <input type="text">
+                <input type="submit" value="Search">
+            </form>
+                {{#each allCourses as |course|}}
+                    {{#unless course.isPublic}}
+                        <div class="card-deck">
+                            <div class="card mb-4">
+                                <img class="card-img-top" src={{course.imageUrl}} alt="Card image cap" width="400">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{course.title}}</h4>
+                                    <p class="card-text">{{course.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/unless}}
+                    {{/each}}
+        </main>
+                {{/if}}
+            {{else}}          
+                <h1 class="text-center">Top Courses</h1>
+                {{#each topThreeCourses as |course|}}
+                    {{#unless course.isPublic}}
+                        <div class="card-deck">
+                            <div class="card mb-4">
+                                <img class="card-img-top" src={{course.imageUrl}} alt="Card image cap" width="400">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{course.title}}</h4>
+                                    <p class="card-text">{{course.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/unless}}
+                    {{/each}}
+                {{!-- {{#if isAdmin}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/create-course">Create Course</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/edit-course">Edit Course</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/view-all-courses">View All Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/course-details">Course Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/enroll-course">Enroll Course</a>
+                    </li>
+                    <main> --}}
+        {{/if}}
+        </div>
+    </div>
+   
+    </div>
+</div>
+
