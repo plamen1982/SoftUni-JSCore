@@ -23,6 +23,7 @@ const stringToBePrinted = (arrayWithDelimiter, delimiter) => {
 
 const solution = (arrayWithDelimiter) => {
     const delimiter = extractDelimiterFromArray(arrayWithDelimiter);
+    //Uncomment with Solution 1
 //    const arrayWithoutDelimiter = extractArrayWithoutDelimiter(arrayWithDelimiter);
    const result = stringToBePrinted(arrayWithDelimiter, delimiter);
    console.log(result);
