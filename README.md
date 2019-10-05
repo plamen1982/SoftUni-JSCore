@@ -1,4 +1,4 @@
-#JS Articles
+# JS Articles
 [Rest parameters and spread operator](https://javascript.info/rest-parameters-spread-operator)
 # SoftUni-JSCore
 
