@@ -1,5 +1,8 @@
 # JS Articles
+
+[Learn from the best, MDN web path](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
 [Rest parameters and spread operator](https://javascript.info/rest-parameters-spread-operator)
+
 # SoftUni-JSCore
 
 ## JavaScript Fundamentals
@@ -9,25 +12,37 @@
 ### JS Fundamentals:
 
 ##### JS Syntax: [JS Syntax](https://youtu.be/ZbWHW2-kncQ)
+
 ##### Operations and Logic Flow: [Operations and Logic Flow](https://youtu.be/hUGlfiHp3v4)
+
 ##### Functions: [Functions](https://youtu.be/VCMExxIiKok)
+
 ##### Arrays and Matrices: [Arrays and Matrices](https://youtu.be/JD9yalY8GnA)
+
 ##### Objects and Json: [Objects and Json](https://youtu.be/hFZeR6pjVUU)
+
 ##### Exam Preparation 1: [Exam Preparation 1](https://youtu.be/xrGB2g5fH2s)
 
 ### JS Advanced:
 
 ##### DOM Manipulations: [DOM Manipulations](https://youtu.be/PDZoPSrrX_E)
+
 ##### JQuery: [JQuery](https://youtu.be/NS8fzGEcJHs0)
+
 ##### Advanced Functions: [Advanced Functions](https://youtu.be/XQuM_ox4tUo)
+
 ##### Object Composition: [Object Composition](https://youtu.be/67xi2GkxknM)
+
 ##### Unit Testing: [Unit Testing](https://youtu.be/lasID2wyv-0)
+
 ##### JS Classes: [JS Classes](https://youtu.be/5JIGrXhKDGg)
+
 ##### Prototype Chain: [Prototype Chain](https://youtu.be/mDNr_13sbD8)
+
 ##### Modules: [Modules](https://youtu.be/kSb6UeOYebg)
 
 JS Fundamentals - септември 2018
- 17 септември 2018  седмици
+17 септември 2018 седмици
 Курсът "JavaScript Fundamentals" изгражда базови умения по програмиране с езика JavaScript. Изучават се конструкциите на JavaScript за изграждане на програмна логика, типове данни, оператори, изрази, условни конструкции, цикли и работа с функции. Обръща се внимание на работа с масиви, стрингове и регулярни изрази, използване на обекти, асоциативни масиви и множества. Курсът е базиран на най-съвременни стандарти и JS технологии (изучава се ES2017).
 
 Курсът е силно насочен към практиката, с огромен брой упражнения в клас и практически изпит. Всички задачи от упражненията и изпитите се оценяват автоматизирано с онлайн judge система.
@@ -43,6 +58,7 @@ JS Fundamentals - септември 2018
 Курсът е част от цялостната програма с JavaScript курсове и уроци за обучение по професия "JavaScript програмист" в Софтуерния университет.
 
 ## JS Advanced
+
 Курсът "JavaScript Advanced" разширява уменията, натрупани в курса "JavaScript Fundamentals" с по-сложни концепции и принципи от функционалното програмиране (ФП) и обектно-ориентираното програмиране (ООП) с езика JavaScript, както и използването на DOM за обработка на елементите в една уеб страница. Курсът е базиран на най-съвременни стандарти и JS технологии (изучава се modern JavaScript с ES2017).
 
 Курсът стартира с изучаване на обектния модел на браузъра (DOM и BOM) и взаимодействието с него от JavaScript: търсене, промяна и изтриване на елементи от DOM дървото, обработка на събития, взаимодействие с уеб браузъра.
@@ -60,6 +76,7 @@ JS Fundamentals - септември 2018
 Курсът е част от цялостната програма с JavaScript курсове и уроци за обучение по професия "JavaScript програмист" в Софтуерния университет.
 
 ## JS Applications
+
 Курсът "JavaScript Applications" (JS Apps) развива практически умения за изграждане на front-end приложения с JavaScript, jQuery, ReactJS, AJAX и REST услуги. Курсът е базиран на най-съвременни стандарти и JS технологии (ползва се ES2017).
 
 Изучават се HTTP, REST и jQuery AJAX и достъпване на REST услуги с AJAX заявки. Изграждат се JavaScript и REST базирани клиентски приложения за извличане и визуализация в браузъра на данни от публични REST APIs като GitHub API, TheMovieDb API и създаване / редакция / изтриване на отдалечени данни (CRUD) през REST услуга с автентикация. Разглеждат се още изграждането на backend REST услуги върху cloud базирани платформи за съхранение на данни (backend-as-a-service / BaaS).
